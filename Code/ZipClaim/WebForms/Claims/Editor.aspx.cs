@@ -164,7 +164,19 @@ namespace ZipClaim.WebForms.Claims
 
                 //При переходе из ServiceClaim для заказа ЗИП передается id заявки в параметре srvid
                 hfServSheetId.Value = Request.QueryString["ssid"];
-                hfIdServClaim.Value = Request.QueryString["servid"];
+                txtServiceDeskNum.Text = hfIdServClaim.Value = Request.QueryString["servid"];
+                txtContractorSdNum.Text = Request.QueryString["csdnum"];
+                    txtDescr.Text = Request.QueryString["cmnt"];
+                txtCounter.Text = Request.QueryString["cntr"];
+                txtCounterColour.Text = Request.QueryString["cntrc"];
+                if (Request.QueryString["dvst"] != null)
+                {
+                    string devStateVal = Request.QueryString["dvst"].ToLower().Equals("true")
+                        ? "1"
+                        : Request.QueryString["dvst"].ToLower().Equals("false") ? "2" : "-1";
+
+                    MainHelper.DdlSetSelectedValue(ref ddlEngeneerConclusion, devStateVal);
+                }
             }
 
             //sdsList.UpdateParameters["id_creator"].DefaultValue = User.Id.ToString();
