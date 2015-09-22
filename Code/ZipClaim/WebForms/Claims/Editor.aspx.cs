@@ -394,7 +394,7 @@ namespace ZipClaim.WebForms.Claims
 
             //Для установки статуса Назначено сохраняем еще раз если есть 
             //if (isNewClaim && claim.IdManager > 0) claim.SetManSelState();
-
+            
             string messageText = String.Format("Сохранение заявки №{0} прошло успешно", claim.Id);
             ServerMessageDisplay(new[] { phServerMessage }, messageText);
             return id;
