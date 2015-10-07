@@ -65,7 +65,7 @@ namespace ZipClaim.WebForms.Claims
             get { return (bool)ViewState[techRightGroupVSKey]; }
             set { ViewState[techRightGroupVSKey] = value; }
         }
-
+        
         protected bool UserIsManager
         {
             get { return (bool)ViewState[serviceManagerRightGroupVSKey]; }
@@ -163,12 +163,27 @@ namespace ZipClaim.WebForms.Claims
                 }
 
                 //При переходе из ServiceClaim для заказа ЗИП передается id заявки в параметре srvid
-                hfServSheetId.Value = Request.QueryString["ssid"];
-                txtServiceDeskNum.Text = hfIdServClaim.Value = Request.QueryString["servid"];
-                txtContractorSdNum.Text = Request.QueryString["csdnum"];
+                if (Request.QueryString["ssid"] != null)
+                {
+                    hfServSheetId.Value = Request.QueryString["ssid"];
+                }
+                if (Request.QueryString["servid"] != null)
+                {
+                    txtServiceDeskNum.Text = hfIdServClaim.Value = Request.QueryString["servid"];
+                }
+
+                if (Request.QueryString["csdnum"] != null)
+                {
+                    txtContractorSdNum.Text = Request.QueryString["csdnum"];
+                }
+                if (Request.QueryString["cmnt"] != null)
+                {
                     txtDescr.Text = Request.QueryString["cmnt"];
-                txtCounter.Text = Request.QueryString["cntr"];
-                txtCounterColour.Text = Request.QueryString["cntrc"];
+                }
+                if (Request.QueryString["cntr"] != null)
+                { txtCounter.Text = Request.QueryString["cntr"]; }
+                if (Request.QueryString["cntrc"] != null)
+                { txtCounterColour.Text = Request.QueryString["cntrc"]; }
                 if (Request.QueryString["dvst"] != null)
                 {
                     string devStateVal = Request.QueryString["dvst"].ToLower().Equals("true")
@@ -177,12 +192,16 @@ namespace ZipClaim.WebForms.Claims
 
                     MainHelper.DdlSetSelectedValue(ref ddlEngeneerConclusion, devStateVal);
                 }
+
+
             }
 
             //sdsList.UpdateParameters["id_creator"].DefaultValue = User.Id.ToString();
 
             RegisterStartupScripts();
         }
+
+
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
@@ -319,13 +338,20 @@ namespace ZipClaim.WebForms.Claims
                 pnlSumCount.Visible = true;
             }
 
-            if (UserIsSysAdmin || UserIsTech)
+            if (AdHelper.UserInGroup(User.AdSid, ConfigurationManager.AppSettings["SuperAdmin"]) || AdHelper.UserInGroup(User.AdSid, ConfigurationManager.AppSettings["ServiceZipClaimConfirm"]))
             {
                 if (hfDisplayZipConfirmState.Value.Equals("True"))
                 {
                     btnZipConfirm.Visible = true;
                 }
             }
+            //Не даем изменять данные которые пришли из сервисного листа
+            txtServiceDeskNum.Enabled = String.IsNullOrEmpty(Request.QueryString["servid"]);
+            txtContractorSdNum.Enabled = String.IsNullOrEmpty(Request.QueryString["csdnum"]);
+            //txtDescr.Enabled = String.IsNullOrEmpty(Request.QueryString["cmnt"]);//Не удается копировать из поля если оно заблокировано
+            txtCounter.Enabled = String.IsNullOrEmpty(Request.QueryString["cntr"]);
+            txtCounterColour.Enabled = String.IsNullOrEmpty(Request.QueryString["cntrc"]);
+            ddlEngeneerConclusion.Enabled = String.IsNullOrEmpty(Request.QueryString["dvst"]);
 
             DisplayOftenSelectedParts();
             DisplayOftenSelectedNoData();
@@ -339,11 +365,11 @@ namespace ZipClaim.WebForms.Claims
 
             var userList = Db.Db.Users.GetUsersSelectionList();
 
-            MainHelper.DdlFill(ref ddlEngeneer, Db.Db.Users.GetUsersSelectionList(serviceEngeneersRightGroup, userList),
+            MainHelper.DdlFill(ref ddlEngeneer, Db.Db.Users.GetUsersSelectionList(serviceEngeneersRightGroup, userList, ConfigurationManager.AppSettings["ServiceTech"]),
                 true);
             MainHelper.DdlFill(ref ddlManager, Db.Db.Users.GetUsersSelectionList(serviceManagerRightGroup, userList),
                 true);
-            MainHelper.DdlFill(ref ddlServiceAdmin, Db.Db.Users.GetUsersSelectionList(serviceAdminRightGroup, userList),
+            MainHelper.DdlFill(ref ddlServiceAdmin, Db.Db.Users.GetUsersSelectionList(serviceAdminRightGroup, userList, ConfigurationManager.AppSettings["ServiceTech"]),
                 true);
             MainHelper.DdlFill(ref ddlOperator, Db.Db.Users.GetUsersSelectionList(serviceOperatorRightGroup, userList),
                 true);
@@ -394,7 +420,7 @@ namespace ZipClaim.WebForms.Claims
 
             //Для установки статуса Назначено сохраняем еще раз если есть 
             //if (isNewClaim && claim.IdManager > 0) claim.SetManSelState();
-            
+
             string messageText = String.Format("Сохранение заявки №{0} прошло успешно", claim.Id);
             ServerMessageDisplay(new[] { phServerMessage }, messageText);
             return id;
@@ -1009,7 +1035,7 @@ $('#oftenSelectedPanel').collapse('hide');
                 ServerMessageDisplay(new[] { phServerMessage }, ex.Message, true);
             }
         }
-        
+
 
         protected void btnSetStateSend_Click(object sender, EventArgs e)
         {

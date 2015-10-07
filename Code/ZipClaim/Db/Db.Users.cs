@@ -93,7 +93,7 @@ namespace ZipClaim.Db
                 return dt;
             }
 
-            public static DataTable GetUsersSelectionList(string groupName, DataTable dtUsers = null)
+            public static DataTable GetUsersSelectionList(string groupName, DataTable dtUsers = null, params string[] groupSidsElse)
             {
                 if (dtUsers == null)
                 {
@@ -126,6 +126,24 @@ namespace ZipClaim.Db
                 foreach (Principal member in members)
                 {
                     sids.Add("'" + member.Sid.ToString() + "'");
+                }
+
+                if (groupSidsElse != null)
+                {
+                    foreach (string grpSid in groupSidsElse)
+                    {
+                        userGroupSid = grpSid;
+
+                        ctx = new PrincipalContext(ContextType.Domain, System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain().Name);
+                        grp = GroupPrincipal.FindByIdentity(ctx, IdentityType.Sid, userGroupSid);
+
+                        members = grp.GetMembers(false);
+                        
+                        foreach (Principal member in members)
+                        {
+                            sids.Add("'" + member.Sid.ToString() + "'");
+                        }
+                    }
                 }
 
                 //foreach (DataRow dr in dtUsers.Rows)

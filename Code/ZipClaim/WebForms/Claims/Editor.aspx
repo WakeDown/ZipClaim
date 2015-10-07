@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for='<%=txtServiceDeskNum.ClientID %>' class="col-sm-2 control-label">№ SD UN1T</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtServiceDeskNum" runat="server" class="form-control" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtServiceDeskNum" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                 <span class="help-block">
                     <%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Заполните поле &laquo;Серийный номер&raquo;" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                     <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
@@ -30,7 +30,7 @@
         <div class="form-group">
             <label for='<%=txtServiceDeskNum.ClientID %>' class="col-sm-2 control-label">№ SD Контрагента</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtContractorSdNum" runat="server" class="form-control" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtContractorSdNum" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                 <span class="help-block">
                     <%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Заполните поле &laquo;Серийный номер&raquo;" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                     <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
@@ -187,7 +187,7 @@
         <div class="form-group">
             <label for='<%=txtDescr.ClientID %>' class="col-sm-2 control-label">Комментарий</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtDescr" runat="server" class="form-control" MaxLength="500" TextMode="MultiLine" Rows="5"></asp:TextBox>
+                <asp:TextBox ID="txtDescr" runat="server" CssClass="form-control" MaxLength="500" TextMode="MultiLine" Rows="5"></asp:TextBox>
                 <span class="help-block">
                     <%--                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Заполните поле &laquo;Город&raquo;" ControlToValidate="txtAddress" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                     <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
@@ -197,7 +197,7 @@
         <div class="form-group">
             <label for='<%=txtCounter.ClientID %>' class="col-sm-2 control-label">Счетчик</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtCounter" runat="server" class="form-control" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtCounter" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                 <span class="help-block">
                     <%--                    <asp:RequiredFieldValidator ID="rfvDdlContractStatus" runat="server" ErrorMessage="Выберите статус договора" ControlToValidate="ddlContractStatus" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm" InitialValue="-1"></asp:RequiredFieldValidator>--%>
                     <asp:CompareValidator ID="cvTxtCounter" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtCounter" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>
@@ -207,7 +207,7 @@
         <div class="form-group">
             <label for='<%=txtCounterColour.ClientID %>' class="col-sm-2 control-label">Счетчик (цветной)</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtCounterColour" runat="server" class="form-control" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtCounterColour" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                 <span class="help-block">
                     <%--                    <asp:RequiredFieldValidator ID="rfvDdlContractStatus" runat="server" ErrorMessage="Выберите статус договора" ControlToValidate="ddlContractStatus" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm" InitialValue="-1"></asp:RequiredFieldValidator>--%>
                     <asp:CompareValidator ID="cvTxtCounterColour" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtCounterColour" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>

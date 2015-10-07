@@ -261,5 +261,45 @@ namespace ZipClaim.Helpers
 
             return result;
         }
+
+        public static NetworkCredential GetAdUserCredentials()
+        {
+            string accUserName = @"UN1T\adUnit_prog";
+            string accUserPass = "1qazXSW@";
+
+            string domain = "UN1T";//accUserName.Substring(0, accUserName.IndexOf("\\"));
+            string name = "adUnit_prog";//accUserName.Substring(accUserName.IndexOf("\\") + 1);
+
+            NetworkCredential nc = new NetworkCredential(name, accUserPass, domain);
+
+            return nc;
+        }
+
+        private static NetworkCredential nc = GetAdUserCredentials();
+
+        public static bool UserInGroup(string sid, params string[] groups)
+        {
+            using (WindowsImpersonationContextFacade impersonationContext
+                = new WindowsImpersonationContextFacade(
+                    nc))
+            {
+                var context = new PrincipalContext(ContextType.Domain);
+                var userPrincipal = UserPrincipal.FindByIdentity(context, IdentityType.Sid, sid);
+
+                if (userPrincipal == null) return false;
+                ////if (userPrincipal.IsMemberOf(context, IdentityType.Sid, AdUserGroup.GetSidByAdGroup(AdGroup.SuperAdmin))) { return true; }//Если юзер Суперадмин
+
+                foreach (var grp in groups)
+                {
+                    if (userPrincipal.IsMemberOf(context, IdentityType.Sid, grp))
+                    {
+                        return true;
+                    }
+                }
+
+
+                return false;
+            }
+        }
     }
 }
