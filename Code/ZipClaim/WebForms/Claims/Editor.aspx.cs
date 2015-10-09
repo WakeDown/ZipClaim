@@ -346,14 +346,22 @@ namespace ZipClaim.WebForms.Claims
                     btnZipConfirm.Visible = true;
                 }
             }
-            //Не даем изменять данные которые пришли из сервисного листа
-            txtServiceDeskNum.Enabled = IsNullOrEmpty(Request.QueryString["servid"]);
-            txtContractorSdNum.Enabled = IsNullOrEmpty(Request.QueryString["csdnum"]);
-            //txtDescr.Enabled = String.IsNullOrEmpty(Request.QueryString["cmnt"]);//Не удается копировать из поля если оно заблокировано
-            txtCounter.Enabled = IsNullOrEmpty(Request.QueryString["cntr"]);
-            txtCounterColour.Enabled = IsNullOrEmpty(Request.QueryString["cntrc"]);
-            ddlEngeneerConclusion.Enabled = IsNullOrEmpty(Request.QueryString["dvst"]);
 
+            if (String.IsNullOrEmpty(Request.QueryString["id"]))
+            {
+                //Не даем изменять данные которые пришли из сервисного листа
+                txtServiceDeskNum.Enabled = IsNullOrEmpty(Request.QueryString["servid"]);
+                txtContractorSdNum.Enabled = IsNullOrEmpty(Request.QueryString["csdnum"]);
+                //txtDescr.Enabled = String.IsNullOrEmpty(Request.QueryString["cmnt"]);//Не удается копировать из поля если оно заблокировано
+                txtCounter.Enabled = IsNullOrEmpty(Request.QueryString["cntr"]);
+                txtCounterColour.Enabled = IsNullOrEmpty(Request.QueryString["cntrc"]);
+                ddlEngeneerConclusion.Enabled = IsNullOrEmpty(Request.QueryString["dvst"]);
+
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(txtServiceDeskNum.Text))txtServiceDeskNum.Enabled = false;
+            }
             DisplayOftenSelectedParts();
             DisplayOftenSelectedNoData();
         }
@@ -507,10 +515,13 @@ namespace ZipClaim.WebForms.Claims
             btnCountersReport.HRef = Format("{0}?id={1}&cid={2}", CountersReportUrl, claim.IdDevice, claim.IdContract);
 
             MainHelper.TxtSetText(ref txtSerialNum, claim.SerialNum);
+            if (!String.IsNullOrEmpty(txtSerialNum.Text)) txtSerialNum.Enabled = false;
             MainHelper.TxtSetText(ref txtDeviceModel, claim.DeviceModel);
             MainHelper.TxtSetText(ref txtCity, claim.City);
+            if (!String.IsNullOrEmpty(txtCity.Text)) txtCity.Enabled = false;
             MainHelper.HfSetValue(ref hfIdCity, claim.IdCity);
             MainHelper.TxtSetText(ref txtAddress, claim.Address);
+            if (!String.IsNullOrEmpty(txtAddress.Text)) txtAddress.Enabled = false;
             MainHelper.TxtSetText(ref txtCounter, claim.Counter, false);
             MainHelper.TxtSetText(ref txtDescr, claim.Descr);
             MainHelper.DdlFill(ref ddlContractor, Db.Db.Unit.GetContractorSelectionList(null, claim.IdContractor ?? -1),
@@ -523,17 +534,22 @@ namespace ZipClaim.WebForms.Claims
             MainHelper.DdlSetSelectedValue(ref ddlServiceAdmin, claim.IdServiceAdmin);
             MainHelper.DdlSetSelectedValue(ref ddlOperator, claim.IdOperator);
             MainHelper.TxtSetText(ref txtRequestNum, claim.RequestNum);
+            if (!String.IsNullOrEmpty(txtRequestNum.Text)) txtRequestNum.Enabled = false;
             MainHelper.TxtSetText(ref txtServiceDeskNum, claim.ServiceDeskNum, false);
+            if (!String.IsNullOrEmpty(txtServiceDeskNum.Text)) txtServiceDeskNum.Enabled = false;
 
             MainHelper.TxtSetText(ref txtCounterColour, claim.CounterColour, false);
             //MainHelper.TxtSetText(ref txtCancelComment, claim.CancelComment);
             MainHelper.RblSetValue(ref rblCancelComment, claim.CancelComment);
             lblCancelComment.Text = claim.CancelComment;
             MainHelper.TxtSetText(ref txtObjectName, claim.ObjectName);
+            if (!String.IsNullOrEmpty(txtObjectName.Text)) txtObjectName.Enabled = false;
             MainHelper.TxtSetText(ref txtWaybillNum, claim.WaybillNum);
+            if (!String.IsNullOrEmpty(txtWaybillNum.Text)) txtWaybillNum.Enabled = false;
             lblContractNumber.Text = claim.ContractNum;
             lblContractType.Text = claim.ContractType;
-            MainHelper.TxtSetText(ref txtContractorSdNum, claim.ContractorSdNum, false);
+            MainHelper.TxtSetText(ref txtContractorSdNum, claim.ContractorSdNum);
+            if (!String.IsNullOrEmpty(txtContractorSdNum.Text)) txtContractorSdNum.Enabled = false;
 
             DataTable dt = Db.Db.Zipcl.CheckDeviceBySerialNum(claim.SerialNum);
             if (dt.Rows.Count > 0)
