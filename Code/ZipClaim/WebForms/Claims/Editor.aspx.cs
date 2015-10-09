@@ -16,6 +16,7 @@ using Microsoft.AspNet.FriendlyUrls.ModelBinding;
 using ZipClaim.Helpers;
 using ZipClaim.Models;
 using ZipClaim.Objects;
+using static System.String;
 
 namespace ZipClaim.WebForms.Claims
 {
@@ -110,12 +111,12 @@ namespace ZipClaim.WebForms.Claims
             MainHelper.DdlSetSelectedValue(ref ddlEngeneer, User.Id);
 
             //Устанавливает параметры инженера и админа
-            if (!String.IsNullOrEmpty(Request.QueryString["esid"]))
+            if (!IsNullOrEmpty(Request.QueryString["esid"]))
             {
                 int engId = Db.Db.Users.GetUserBySid(Request.QueryString["esid"]).Id;
                 MainHelper.DdlSetSelectedValue(ref ddlEngeneer, engId);
             }
-            if (!String.IsNullOrEmpty(Request.QueryString["asid"]))
+            if (!IsNullOrEmpty(Request.QueryString["asid"]))
             {
                 int admId = Db.Db.Users.GetUserBySid(Request.QueryString["asid"]).Id;
                 MainHelper.DdlSetSelectedValue(ref ddlServiceAdmin, admId);
@@ -346,12 +347,12 @@ namespace ZipClaim.WebForms.Claims
                 }
             }
             //Не даем изменять данные которые пришли из сервисного листа
-            txtServiceDeskNum.Enabled = String.IsNullOrEmpty(Request.QueryString["servid"]);
-            txtContractorSdNum.Enabled = String.IsNullOrEmpty(Request.QueryString["csdnum"]);
+            txtServiceDeskNum.Enabled = IsNullOrEmpty(Request.QueryString["servid"]);
+            txtContractorSdNum.Enabled = IsNullOrEmpty(Request.QueryString["csdnum"]);
             //txtDescr.Enabled = String.IsNullOrEmpty(Request.QueryString["cmnt"]);//Не удается копировать из поля если оно заблокировано
-            txtCounter.Enabled = String.IsNullOrEmpty(Request.QueryString["cntr"]);
-            txtCounterColour.Enabled = String.IsNullOrEmpty(Request.QueryString["cntrc"]);
-            ddlEngeneerConclusion.Enabled = String.IsNullOrEmpty(Request.QueryString["dvst"]);
+            txtCounter.Enabled = IsNullOrEmpty(Request.QueryString["cntr"]);
+            txtCounterColour.Enabled = IsNullOrEmpty(Request.QueryString["cntrc"]);
+            ddlEngeneerConclusion.Enabled = IsNullOrEmpty(Request.QueryString["dvst"]);
 
             DisplayOftenSelectedParts();
             DisplayOftenSelectedNoData();
@@ -383,7 +384,7 @@ namespace ZipClaim.WebForms.Claims
         protected void txtContractorInn_OnTextChanged(object sender, EventArgs e)
         {
             string text = MainHelper.TxtGetText(ref txtContractorInn);
-            if (!String.IsNullOrEmpty(text))
+            if (!IsNullOrEmpty(text))
             {
                 MainHelper.DdlFill(ref ddlContractor, Db.Db.Unit.GetContractorSelectionList(text), false);
                 ddlContractor.Focus();
@@ -399,7 +400,7 @@ namespace ZipClaim.WebForms.Claims
             try
             {
                 int id = Save();
-                string queryParams = String.Format("id={0}", id);
+                string queryParams = Format("id={0}", id);
                 RedirectWithParams(queryParams);
             }
             catch (Exception ex)
@@ -421,7 +422,7 @@ namespace ZipClaim.WebForms.Claims
             //Для установки статуса Назначено сохраняем еще раз если есть 
             //if (isNewClaim && claim.IdManager > 0) claim.SetManSelState();
 
-            string messageText = String.Format("Сохранение заявки №{0} прошло успешно", claim.Id);
+            string messageText = Format("Сохранение заявки №{0} прошло успешно", claim.Id);
             ServerMessageDisplay(new[] { phServerMessage }, messageText);
             return id;
         }
@@ -470,7 +471,7 @@ namespace ZipClaim.WebForms.Claims
             claim.IdServiceAdmin = MainHelper.DdlGetSelectedValueInt(ref ddlServiceAdmin, true);
             claim.ServiceDeskNum = MainHelper.TxtGetText(ref txtServiceDeskNum);
             claim.CounterColour = MainHelper.TxtGetTextInt32(ref txtCounterColour);
-            claim.CancelComment = MainHelper.TxtGetText(ref txtCancelComment);
+            claim.CancelComment = rblCancelComment.SelectedValue;//MainHelper.TxtGetText(ref txtCancelComment);
             claim.ObjectName = MainHelper.TxtGetText(ref txtObjectName);
             claim.WaybillNum = MainHelper.TxtGetText(ref txtWaybillNum);
             claim.ContractNum = lblContractNumber.Text;
@@ -490,8 +491,8 @@ namespace ZipClaim.WebForms.Claims
 
             lFormTitle.Text = !isEdit
                 ? "Добавление заявки на ЗИП"
-                : String.Format("Редактирование  заявки на ЗИП №{0} от {1:d}", claim.Id, claim.DateCreate);
-            hfContractNumAmdDate.Value = !isEdit ? "" : String.Format("№{0} от {1:d}", claim.Id, claim.DateCreate);
+                : Format("Редактирование  заявки на ЗИП №{0} от {1:d}", claim.Id, claim.DateCreate);
+            hfContractNumAmdDate.Value = !isEdit ? "" : Format("№{0} от {1:d}", claim.Id, claim.DateCreate);
 
             MainHelper.HfSetValue(ref hfDisplayDoneState, claim.DisplayDoneState);
             //MainHelper.HfSetValue(ref hfDi, claim.DisplayPriceSet);
@@ -503,14 +504,14 @@ namespace ZipClaim.WebForms.Claims
 
             MainHelper.HfSetValue(ref hfIdDevice, claim.IdDevice);
             MainHelper.HfSetValue(ref hfIdContract, claim.IdContract);
-            btnCountersReport.HRef = String.Format("{0}?id={1}&cid={2}", CountersReportUrl, claim.IdDevice, claim.IdContract);
+            btnCountersReport.HRef = Format("{0}?id={1}&cid={2}", CountersReportUrl, claim.IdDevice, claim.IdContract);
 
             MainHelper.TxtSetText(ref txtSerialNum, claim.SerialNum);
             MainHelper.TxtSetText(ref txtDeviceModel, claim.DeviceModel);
             MainHelper.TxtSetText(ref txtCity, claim.City);
             MainHelper.HfSetValue(ref hfIdCity, claim.IdCity);
             MainHelper.TxtSetText(ref txtAddress, claim.Address);
-            MainHelper.TxtSetText(ref txtCounter, claim.Counter);
+            MainHelper.TxtSetText(ref txtCounter, claim.Counter, false);
             MainHelper.TxtSetText(ref txtDescr, claim.Descr);
             MainHelper.DdlFill(ref ddlContractor, Db.Db.Unit.GetContractorSelectionList(null, claim.IdContractor ?? -1),
                 false);
@@ -522,15 +523,17 @@ namespace ZipClaim.WebForms.Claims
             MainHelper.DdlSetSelectedValue(ref ddlServiceAdmin, claim.IdServiceAdmin);
             MainHelper.DdlSetSelectedValue(ref ddlOperator, claim.IdOperator);
             MainHelper.TxtSetText(ref txtRequestNum, claim.RequestNum);
-            MainHelper.TxtSetText(ref txtServiceDeskNum, claim.ServiceDeskNum);
-            MainHelper.TxtSetText(ref txtCounterColour, claim.CounterColour);
-            MainHelper.TxtSetText(ref txtCancelComment, claim.CancelComment);
+            MainHelper.TxtSetText(ref txtServiceDeskNum, claim.ServiceDeskNum, false);
+
+            MainHelper.TxtSetText(ref txtCounterColour, claim.CounterColour, false);
+            //MainHelper.TxtSetText(ref txtCancelComment, claim.CancelComment);
+            MainHelper.RblSetValue(ref rblCancelComment, claim.CancelComment);
             lblCancelComment.Text = claim.CancelComment;
             MainHelper.TxtSetText(ref txtObjectName, claim.ObjectName);
             MainHelper.TxtSetText(ref txtWaybillNum, claim.WaybillNum);
             lblContractNumber.Text = claim.ContractNum;
             lblContractType.Text = claim.ContractType;
-            MainHelper.TxtSetText(ref txtContractorSdNum, claim.ContractorSdNum);
+            MainHelper.TxtSetText(ref txtContractorSdNum, claim.ContractorSdNum, false);
 
             DataTable dt = Db.Db.Zipcl.CheckDeviceBySerialNum(claim.SerialNum);
             if (dt.Rows.Count > 0)
@@ -553,12 +556,12 @@ namespace ZipClaim.WebForms.Claims
 
             DisplayOftenSelectedParts();
 
-            rfvTxtSerialNum.Enabled = String.IsNullOrEmpty(txtInvNum.Text);
-            rfvTxtInvNum.Enabled = String.IsNullOrEmpty(txtSerialNum.Text);
+            rfvTxtSerialNum.Enabled = IsNullOrEmpty(txtInvNum.Text);
+            rfvTxtInvNum.Enabled = IsNullOrEmpty(txtSerialNum.Text);
 
             if (claim.HideTop)
             {
-                string script = String.Format(@"$(document).ready(function() {{
+                string script = Format(@"$(document).ready(function() {{
     $('#oftenSelectedPanel').collapse({{'toggle': false}});
 $('#oftenSelectedPanel').collapse('hide');
 }});");
@@ -579,9 +582,9 @@ $('#oftenSelectedPanel').collapse('hide');
 
         private void RegisterStartupScripts()
         {
-            string script = string.Empty;
+            string script = Empty;
             //<Фильтрация списка по вводимому тексту>
-            script = String.Format(@"$(function() {{$('#{0}').filterByText($('#{1}'), true);}});",
+            script = Format(@"$(function() {{$('#{0}').filterByText($('#{1}'), true);}});",
                 ddlContractor.ClientID, txtContractorInn.ClientID);
             //Очень долго отрабатывает на слабых компах, решено заменить на серверный аналог
             //ScriptManager.RegisterStartupScript(this, GetType(), "filterContractorListByInn", script, true);
@@ -630,14 +633,14 @@ $('#oftenSelectedPanel').collapse('hide');
                 txtCity.Enabled =
                     txtAddress.Enabled = txtObjectName.Enabled = txtContractorInn.Enabled = ddlContractor.Enabled = true;
             txtDeviceModel.Text =
-                txtCity.Text = txtAddress.Text = txtObjectName.Text = txtContractorInn.Text = String.Empty;
+                txtCity.Text = txtAddress.Text = txtObjectName.Text = txtContractorInn.Text = Empty;
             ddlContractor.Items.Clear();
             MainHelper.DdlSetEmptyOrSelectAllSelectedIndex(ref ddlServiceAdmin);
             MainHelper.DdlSetEmptyOrSelectAllSelectedIndex(ref ddlManager);
             pnlZipState.Attributes.Clear();
 
-            rfvTxtSerialNum.Enabled = String.IsNullOrEmpty(txtInvNum.Text);
-            rfvTxtInvNum.Enabled = String.IsNullOrEmpty(txtSerialNum.Text);
+            rfvTxtSerialNum.Enabled = IsNullOrEmpty(txtInvNum.Text);
+            rfvTxtInvNum.Enabled = IsNullOrEmpty(txtSerialNum.Text);
 
             if (dt.Rows.Count > 0)
             {
@@ -804,7 +807,7 @@ $('#oftenSelectedPanel').collapse('hide');
             //RedirectWithParams();
             tblClaimUnitList.DataBind();
 
-            lLastClaim.Text = String.Empty;
+            lLastClaim.Text = Empty;
             (tblClaimUnitList.FooterRow.FindControl("txtCatalogNum") as TextBox).Focus();
         }
 
@@ -820,7 +823,7 @@ $('#oftenSelectedPanel').collapse('hide');
             {
                 string nomNum = ((DataRowView)e.Row.DataItem)["nomenclature_num"].ToString();
 
-                if (!String.IsNullOrEmpty(nomNum))
+                if (!IsNullOrEmpty(nomNum))
                 {
                     DataTable dt = Db.Db.Zipcl.GetNomenclatureDataByNumber(nomNum);//Берем данные по позиции из Эталон
 
@@ -834,7 +837,7 @@ $('#oftenSelectedPanel').collapse('hide');
 
                         Label lblPriceIn = (e.Row.FindControl("lblPriceIn") as Label);
 
-                        if (!priceStr.Equals("-") && lblPriceIn != null && String.IsNullOrEmpty(lblPriceIn.Text))
+                        if (!priceStr.Equals("-") && lblPriceIn != null && IsNullOrEmpty(lblPriceIn.Text))
                         {
                             decimal priceIn;
                             decimal.TryParse(priceStr.Replace('.', ','), out priceIn);
@@ -868,7 +871,7 @@ $('#oftenSelectedPanel').collapse('hide');
                     string priceIn = dataItem["price_in"].ToString();
                     string deliveryTime = dataItem["delivery_time"].ToString();
 
-                    if (String.IsNullOrEmpty(priceIn) && String.IsNullOrEmpty(deliveryTime))
+                    if (IsNullOrEmpty(priceIn) && IsNullOrEmpty(deliveryTime))
                     {
                         haveUnit2SendPriceRequest = true;
                     }
@@ -1079,7 +1082,8 @@ $('#oftenSelectedPanel').collapse('hide');
                 //int id = Convert.ToInt32((sender as LinkButton).CommandArgument);
                 Claim claim = new Claim(Id);
                 claim.IdCreator = User.Id;
-                claim.CancelComment = MainHelper.TxtGetText(ref txtCancelComment);
+                //claim.CancelComment = MainHelper.TxtGetText(ref txtCancelComment);
+                claim.CancelComment = rblCancelComment.SelectedValue.ToString();
                 claim.SetCancelState();
                 //RedirectWithParams();
                 Response.Redirect(ListUrl);
@@ -1106,13 +1110,13 @@ $('#oftenSelectedPanel').collapse('hide');
             string engeneer = ddlEngeneer.SelectedItem.Text.Replace("--выберите значение--", "");
             string contractor = ddlContractor.SelectedItem.Text.Replace("--выберите значение--", "");
 
-            lInfo.Text = String.Format("{0} {1} {2} {3} {7} {4} {6} {8} {5} {9} {10}", hfContractNumAmdDate.Value,
+            lInfo.Text = Format("{11} {0} {1} {2} {3} {7} {4} {12} {6} {8} {5} {9} {10}", hfContractNumAmdDate.Value,
                 txtServiceDeskNum.Text, txtSerialNum.Text, model,
                 txtAddress.Text, engeneer, lblContractNumber.Text, txtCity.Text, contractor, lblContractNumber.Text,
-                lblContractType.Text);
+                lblContractType.Text, txtContractorSdNum.Text, txtObjectName.Text);
             btnCopyInfo.Focus();
             //<Выделение текста>
-            string script = String.Format(@"$(function() {{
+            string script = Format(@"$(function() {{
 var e=document.getElementById('{0}');
 if(window.getSelection)
 {{
@@ -1155,22 +1159,22 @@ else
             //int idDevice = 0;
             string serialNum = MainHelper.TxtGetText(ref txtSerialNum);
             string catalogNum = (tblClaimUnitList.FooterRow.FindControl("txtCatalogNum") as TextBox).Text;
-            catalogNum = String.IsNullOrEmpty(catalogNum) ? null : catalogNum;
+            catalogNum = IsNullOrEmpty(catalogNum) ? null : catalogNum;
 
             DataTable dt = Db.Db.Zipcl.GetLastClaimDaysCount(serialNum, catalogNum);
-            string lastClaimText = String.Empty;
+            string lastClaimText = Empty;
 
             if (dt.Rows.Count > 0)
             {
                 string daysCount = dt.Rows[0]["days_count"].ToString();
                 string claimDate = dt.Rows[0]["claim_date"].ToString();
                 string claimState = dt.Rows[0]["claim_state"].ToString();
-                lastClaimText = String.Format("Дата последнего заказа {0} ({1}д.) - {2}",
+                lastClaimText = Format("Дата последнего заказа {0} ({1}д.) - {2}",
                     Convert.ToDateTime(claimDate).ToShortDateString(), daysCount, claimState);
             }
             else
             {
-                if (!String.IsNullOrEmpty(catalogNum))
+                if (!IsNullOrEmpty(catalogNum))
                 {
                     lastClaimText = "Нет информации о дате последнего заказа";
                 }
@@ -1196,7 +1200,7 @@ else
             string currentCity = MainHelper.TxtGetText(ref txtCity);
             string currentObject = MainHelper.TxtGetText(ref txtObjectName);
             string mailText =
-                String.Format(
+                Format(
                     "Добрый день.\r\n{3} сообщает, что необходимо изменить местонахождение аппарата с серийным номером {0}\r\nТекущее местоположение:\r\n{1} {2} {5}\r\nИнформация о новом местоположении:\r\n{4}",
                     serailNum, currentCity, currentAddress, User.FullName, changeAddressNote, currentObject);
             string mailTo = ConfigurationManager.AppSettings["changeAddressNoteMailTo"];
@@ -1220,7 +1224,7 @@ else
             {
                 string currentDateChange = ((DataRowView)e.Item.DataItem)["change_date"].ToString();
 
-                if (!String.IsNullOrEmpty(hfLastHistDate.Value))
+                if (!IsNullOrEmpty(hfLastHistDate.Value))
                 {
                     DateTime lastDateChange = Convert.ToDateTime(hfLastHistDate.Value);
                     DateTime currentDateChangeDT = Convert.ToDateTime(currentDateChange);
@@ -1228,7 +1232,7 @@ else
                     int days = dateDiff.Days;
                     int hours = dateDiff.Hours + (days * 24);
 
-                    (e.Item.FindControl("lDateDiff") as Literal).Text = String.Format("{0}ч.({1}дн.)", hours, days);
+                    (e.Item.FindControl("lDateDiff") as Literal).Text = Format("{0}ч.({1}дн.)", hours, days);
                 }
 
                 hfLastHistDate.Value = currentDateChange;
@@ -1237,7 +1241,7 @@ else
 
         private void DisplayOftenSelectedParts()
         {
-            bool displayNoOpportunity = String.IsNullOrEmpty(hfIdDevice.Value);
+            bool displayNoOpportunity = IsNullOrEmpty(hfIdDevice.Value);
 
             pnlOftenSelectedList.Visible = !displayNoOpportunity;
             lblNoDataOpportunity.Visible = displayNoOpportunity;
@@ -1276,7 +1280,7 @@ else
                     string priceIn = dataItem["price_in"].ToString();
                     string deliveryTime = dataItem["delivery_time"].ToString();
 
-                    if (String.IsNullOrEmpty(priceIn) && String.IsNullOrEmpty(deliveryTime))
+                    if (IsNullOrEmpty(priceIn) && IsNullOrEmpty(deliveryTime))
                     {
                         haveUnit2SendPriceRequest = true;
                         break;
@@ -1293,12 +1297,12 @@ else
         {
             DataView dv = (DataView)sdsList.Select(DataSourceSelectArguments.Empty);
 
-            string sumCountIn = String.Format("{0:N2}", dv.Table.Compute("Sum(price_in_sum)", ""));
-            if (string.IsNullOrEmpty(sumCountIn)) sumCountIn = 0.ToString();
+            string sumCountIn = Format("{0:N2}", dv.Table.Compute("Sum(price_in_sum)", ""));
+            if (IsNullOrEmpty(sumCountIn)) sumCountIn = 0.ToString();
             lSummCountIn.Text = sumCountIn;
 
-            string sumCountOut = String.Format("{0:N2}", dv.Table.Compute("Sum(price_out_sum)", ""));
-            if (string.IsNullOrEmpty(sumCountOut)) sumCountOut = 0.ToString();
+            string sumCountOut = Format("{0:N2}", dv.Table.Compute("Sum(price_out_sum)", ""));
+            if (IsNullOrEmpty(sumCountOut)) sumCountOut = 0.ToString();
             lSummCountOut.Text = sumCountOut;
         }
 
@@ -1310,7 +1314,7 @@ else
 
             //RequiredFieldValidator rfvTxtNomenclatureNum = (tblClaimUnitList.Rows[rowIndex].FindControl("rfvTxtNomenclatureNum") as RequiredFieldValidator);
             TextBox txtNomenclatureNum = (tblClaimUnitList.Rows[rowIndex].FindControl("txtNomenclatureNum") as TextBox);
-            txtNomenclatureNum.Text = String.Empty;
+            txtNomenclatureNum.Text = Empty;
             //txtNomenclatureNum.Enabled = 
             txtNomenclatureNum.Attributes.Add("placeholder", "№ Заявки");
             //rfvTxtNomenclatureNum.Enabled = !enabled;

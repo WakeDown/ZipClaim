@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for='<%=txtServiceDeskNum.ClientID %>' class="col-sm-2 control-label">№ SD Контрагента</label>
+            <label for='<%=txtContractorSdNum.ClientID %>' class="col-sm-2 control-label">№ SD Контрагента</label>
             <div class="col-sm-10">
                 <asp:TextBox ID="txtContractorSdNum" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                 <span class="help-block">
@@ -828,9 +828,20 @@
                 <asp:HiddenField ID="hfDisplayCancelState" runat="server" />
                 <%--                <div class="row">--%>
                 <div class="pull-left" id="vgCancel">
-                    <asp:TextBox ID="txtCancelComment" runat="server" CssClass="form-control txt-cancel" MaxLength="500" Rows="3" TextMode="MultiLine" placeholder="Причина отклонения заявки"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvTxtCancelComment" runat="server" ErrorMessage="Укажите причину отклонения заявки" ControlToValidate="txtCancelComment" Display="Dynamic" SetFocusOnError="True" CssClass="text-danger" ValidationGroup="vgCancel"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="cvTxtCancelComment" runat="server" ErrorMessage="Длина причины должна быть не менее 10 символов" ControlToValidate="txtCancelComment" Display="Dynamic" SetFocusOnError="True" CssClass="text-danger" ValidationGroup="vgCancel" Operator="GreaterThan" ValidationExpression="^[\s\S]{10,500}$"></asp:RegularExpressionValidator>
+                    <%--<asp:TextBox ID="txtCancelComment" runat="server" CssClass="form-control txt-cancel" MaxLength="500" Rows="3" TextMode="MultiLine" placeholder="Причина отклонения заявки"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="rfvTxtCancelComment" runat="server" ErrorMessage="Укажите причину отклонения заявки" ControlToValidate="txtCancelComment" Display="Dynamic" SetFocusOnError="True" CssClass="text-danger" ValidationGroup="vgCancel"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="cvTxtCancelComment" runat="server" ErrorMessage="Длина причины должна быть не менее 10 символов" ControlToValidate="txtCancelComment" Display="Dynamic" SetFocusOnError="True" CssClass="text-danger" ValidationGroup="vgCancel" Operator="GreaterThan" ValidationExpression="^[\s\S]{10,500}$"></asp:RegularExpressionValidator>--%>
+                    <asp:RadioButtonList ID="rblCancelComment" runat="server">
+                        <asp:ListItem Enabled="True" Selected="False" Text="Покупка ЗИП не предусмотрена договором" Value="Покупка ЗИП не предусмотрена договором" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Отгружен из резервов" Value="Отгружен из резервов" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Заказчик не согласовал закупку" Value="Заказчик не согласовал закупку" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Аппарат на списание" Value="Аппарат на списание" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Ресурс ЗИПа не пройден" Value="Ресурс ЗИПа не пройден" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="ЗИП не доступен к заказу" Value="ЗИП не доступен к заказу" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Дублирующая заявка" Value="Дублирующая заявка" />
+                        <asp:ListItem Enabled="True" Selected="False" Text="Гарантийный ремонт" Value="Гарантийный ремонт" />
+                    </asp:RadioButtonList>
+                   <asp:RequiredFieldValidator ID="rfvrblCancelComment" runat="server" ErrorMessage="Укажите причину отклонения заявки" ControlToValidate="rblCancelComment" Display="Dynamic" SetFocusOnError="True" InitialValue="" CssClass="text-danger" ValidationGroup="vgCancel"></asp:RequiredFieldValidator>
                 </div>
                 <div class="pull-right">
                     <asp:LinkButton ID="btnCancelState" runat="server" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Отклонить заявку" OnClick="btnCancelState_Click" ValidationGroup="vgCancel"><i class="fa fa-times fa-2x"></i></asp:LinkButton>

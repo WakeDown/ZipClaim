@@ -967,31 +967,22 @@ namespace ZipClaim.WebForms.Claims {
         protected global::System.Web.UI.WebControls.HiddenField hfDisplayCancelState;
         
         /// <summary>
-        /// txtCancelComment control.
+        /// rblCancelComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCancelComment;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblCancelComment;
         
         /// <summary>
-        /// rfvTxtCancelComment control.
+        /// rfvrblCancelComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTxtCancelComment;
-        
-        /// <summary>
-        /// cvTxtCancelComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator cvTxtCancelComment;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvrblCancelComment;
         
         /// <summary>
         /// btnCancelState control.
