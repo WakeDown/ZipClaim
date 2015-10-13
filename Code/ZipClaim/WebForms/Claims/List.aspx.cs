@@ -97,7 +97,7 @@ namespace ZipClaim.WebForms.Claims
             FilterLinks.Add(new FilterLink("sdnum", txtSdNum));
             FilterLinks.Add(new FilterLink("csdnum", txtContractorSdNum));
             FilterLinks.Add(new FilterLink("sadm", ddlServiceAdmin, User.Id.ToString()));
-            FilterLinks.Add(new FilterLink("engr", ddlEngeneer, User.Id.ToString()));
+            FilterLinks.Add(new FilterLink("engr", ddlEngeneer, !UserIsTech && !UserIsSysAdmin? User.Id.ToString() : null));
             FilterLinks.Add(new FilterLink("snum", txtSerialNum));
             FilterLinks.Add(new FilterLink("ctrtr", ddlContractor));
             FilterLinks.Add(new FilterLink("state", chklClaimState, "1,3,4,5,6,8,9,10,11,12,13,21,22"));
@@ -202,12 +202,12 @@ namespace ZipClaim.WebForms.Claims
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            ddlEngeneer.Enabled = !UserIsEngeneer;
+            ddlEngeneer.Enabled = !UserIsEngeneer && !UserIsTech;
         }
 
         private void DisplayFormPars()
         {
-            pnlNewClaim.Visible = UserIsEngeneer || UserIsSysAdmin;
+            pnlNewClaim.Visible = UserIsEngeneer || UserIsTech || UserIsSysAdmin;
 
             //Если пользователь не инженер и не серв.Администратор, то показываем цены
             if (UserIsManager || UserIsSysAdmin || UserIsOperator)
