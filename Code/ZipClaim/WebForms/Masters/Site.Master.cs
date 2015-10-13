@@ -34,6 +34,9 @@ namespace ZipClaim.WebForms.Masters
         private const string zipClientRightGroupVSKey = "zipClientRightGroupVSKey";
         private const string clientCounterViewRightGroupVSKey = "clientCounterViewRightGroupVSKey";
 
+        private string techRightGroup = ConfigurationManager.AppSettings["techRightGroup"];
+        private const string techRightGroupVSKey = "techRightGroupVSKey";
+
         private const string supplyManRightGroupVSKey = "supplyManRightGroupVSKey";
         string supplyManRightGroup = ConfigurationManager.AppSettings["supplyManRightGroup"];
 
@@ -84,7 +87,12 @@ namespace ZipClaim.WebForms.Masters
             get { return (bool)ViewState[clientCounterViewRightGroupVSKey]; }
             set { ViewState[clientCounterViewRightGroupVSKey] = value; }
         }
-       
+
+        protected bool UserIsTech
+        {
+            get { return (bool)ViewState[techRightGroupVSKey]; }
+            set { ViewState[techRightGroupVSKey] = value; }
+        }
 
         public User User { get { return (User)ViewState[vskUser] ?? new User(); } 
             set { ViewState[vskUser] = value; } }
@@ -123,6 +131,7 @@ namespace ZipClaim.WebForms.Masters
                 UserIsEngeneer = Db.Db.Users.CheckUserRights(User.Login, serviceEngeneersRightGroup);
                 UserIsSysAdmin = Db.Db.Users.CheckUserRights(User.Login, sysAdminRightGroup);
                 UserIsSupplyMan = Db.Db.Users.CheckUserRights(User.Login, supplyManRightGroup);
+                UserIsTech = Db.Db.Users.CheckUserRights(User.Login, null, techRightGroup);
 
                 //Зашел клиент
                 UserIsClient = Db.Db.Users.CheckUserRights(currLogin, zipClientRightGroup);
@@ -169,9 +178,9 @@ namespace ZipClaim.WebForms.Masters
                 }
 
                 //Автопереход для снабжения на страницу Снабжение
-                if ((UserIsEngeneer /*|| userIsSysAdmin*/) && Request.Path.Equals("/"))
+                if ((UserIsSupplyMan /*|| userIsSysAdmin*/) && Request.Path.Equals("/"))
                 {
-                    Response.Redirect(FriendlyUrl.Href("~/Claims/ZipHistory"));
+                    Response.Redirect(FriendlyUrl.Href("~/Claims/Supply"));
                 }
 
                 LoadFormSettings();
@@ -183,7 +192,7 @@ namespace ZipClaim.WebForms.Masters
                 
 
                 //Автопереход для инженеров на страницу История
-                if ((UserIsEngeneer /*|| userIsSysAdmin*/) && Request.Path.Equals("/"))
+                if ((UserIsEngeneer && !UserIsServiceAdmin && !UserIsTech /*|| userIsSysAdmin*/) && Request.Path.Equals("/"))
                 {
                     Response.Redirect(FriendlyUrl.Href("~/Claims/ZipHistory"));
                 }

@@ -157,17 +157,20 @@ namespace ZipClaim.WebForms.Claims
 
                 if (Request.QueryString["id"] == null)
                 {
-                    if (UserIsServiceAdmin)
+                    if (!UserIsSysAdmin && !UserIsTech)
                     {
-                        sdsList.SelectParameters["id_service_admin"].DefaultValue = User.Id.ToString();
-                    }
-                    if (UserIsEngeneer&& !UserIsTech)
-                    {
-                        sdsList.SelectParameters["id_engeneer"].DefaultValue = User.Id.ToString();
-                    }
-                    if (UserIsManager)
-                    {
-                        sdsList.SelectParameters["id_manager"].DefaultValue = User.Id.ToString();
+                        if (UserIsServiceAdmin)
+                        {
+                            sdsList.SelectParameters["id_service_admin"].DefaultValue = User.Id.ToString();
+                        }
+                        if (UserIsEngeneer)
+                        {
+                            sdsList.SelectParameters["id_engeneer"].DefaultValue = User.Id.ToString();
+                        }
+                        if (UserIsManager)
+                        {
+                            sdsList.SelectParameters["id_manager"].DefaultValue = User.Id.ToString();
+                        }
                     }
                     sdsList.DataBind();
                 }
@@ -202,7 +205,7 @@ namespace ZipClaim.WebForms.Claims
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            ddlEngeneer.Enabled = !UserIsEngeneer && !UserIsTech;
+            ddlEngeneer.Enabled = !UserIsEngeneer || UserIsTech || UserIsSysAdmin;
         }
 
         private void DisplayFormPars()
