@@ -144,7 +144,7 @@ namespace ZipClaim.WebForms.Claims
                 UserIsManager = Db.Db.Users.CheckUserRights(User.Login, serviceManagerRightGroup);
                 UserIsOperator = Db.Db.Users.CheckUserRights(User.Login, serviceOperatorRightGroup);
                 UserIsSysAdmin = Db.Db.Users.CheckUserRights(User.Login, sysAdminRightGroup);
-                UserIsTech = Db.Db.Users.CheckUserRights(User.Login, techRightGroup);
+                UserIsTech = Db.Db.Users.CheckUserRights(User.Login, null, techRightGroup);
 
                 FillLists();
 
@@ -543,7 +543,7 @@ namespace ZipClaim.WebForms.Claims
             MainHelper.RblSetValue(ref rblCancelComment, claim.CancelComment);
             lblCancelComment.Text = claim.CancelComment;
             MainHelper.TxtSetText(ref txtObjectName, claim.ObjectName);
-            if (!String.IsNullOrEmpty(txtObjectName.Text)) txtObjectName.Enabled = false;
+            if (!String.IsNullOrEmpty(txtObjectName.Text)) txtSerialNum.Enabled = false;
             MainHelper.TxtSetText(ref txtWaybillNum, claim.WaybillNum);
             if (!String.IsNullOrEmpty(txtWaybillNum.Text)) txtWaybillNum.Enabled = false;
             lblContractNumber.Text = claim.ContractNum;

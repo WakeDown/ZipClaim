@@ -21,6 +21,8 @@ namespace ZipClaim.WebForms.Claims
         string serviceOperatorRightGroup = ConfigurationManager.AppSettings["serviceOperatorRightGroup"];
         string dsuZipClaimDelete = ConfigurationManager.AppSettings["dsuZipClaimDelete"];
         string sysAdminRightGroup = ConfigurationManager.AppSettings["sysAdminRightGroup"];
+        private string techRightGroup = ConfigurationManager.AppSettings["techRightGroup"];
+        private const string techRightGroupVSKey = "techRightGroupVSKey";
         private const string serviceManagerRightGroupVSKey = "serviceManagerRightGroupVSKey";
         private const string serviceEngeneerRightGroupVSKey = "serviceEngeneerRightGroupVSKey";
         private const string serviceAdminRightGroupVSKey = "serviceAdminRightGroupVSKey";
@@ -47,6 +49,12 @@ namespace ZipClaim.WebForms.Claims
         {
             get { return (bool)ViewState[serviceEngeneerRightGroupVSKey]; }
             set { ViewState[serviceEngeneerRightGroupVSKey] = value; }
+        }
+
+        protected bool UserIsTech
+        {
+            get { return (bool)ViewState[techRightGroupVSKey]; }
+            set { ViewState[techRightGroupVSKey] = value; }
         }
 
         private bool UserIsServiceAdmin
@@ -138,7 +146,9 @@ namespace ZipClaim.WebForms.Claims
                 UserCanDeleteClaim = Db.Db.Users.CheckUserRights(User.Login, dsuZipClaimDelete);
 
                 UserIsSysAdmin = Db.Db.Users.CheckUserRights(User.Login, sysAdminRightGroup);
-                
+
+                UserIsTech = Db.Db.Users.CheckUserRights(User.Login, null, techRightGroup);
+
                 //btnNewClaim.Visible = UserIsEngeneer;
 
                 SetDefaultFilterValues();
@@ -151,7 +161,7 @@ namespace ZipClaim.WebForms.Claims
                     {
                         sdsList.SelectParameters["id_service_admin"].DefaultValue = User.Id.ToString();
                     }
-                    if (UserIsEngeneer)
+                    if (UserIsEngeneer&& !UserIsTech)
                     {
                         sdsList.SelectParameters["id_engeneer"].DefaultValue = User.Id.ToString();
                     }

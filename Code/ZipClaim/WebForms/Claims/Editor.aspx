@@ -274,7 +274,7 @@
             <div class="form-group">
                 <label for='<%=txtRequestNum.ClientID %>' class="col-sm-2 control-label">№ требования</label>
                 <div class="col-sm-10">
-                    <asp:TextBox ID="txtRequestNum" runat="server" class="form-control" MaxLength="9"></asp:TextBox>
+                    <asp:TextBox ID="txtRequestNum" runat="server" CssClass="form-control" MaxLength="9"></asp:TextBox>
                     <span class="help-block">
                         <%--<asp:RequiredFieldValidator ID="rfvTxtRequestNum" runat="server" ErrorMessage="Заполните поле &laquo;№ требования&raquo;" ControlToValidate="txtRequestNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                         <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
@@ -285,7 +285,7 @@
             <div class="form-group">
                 <label for='<%=txtWaybillNum.ClientID %>' class="col-sm-2 control-label">№ трансп. заявки</label>
                 <div class="col-sm-10">
-                    <asp:TextBox ID="txtWaybillNum" runat="server" class="form-control" MaxLength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtWaybillNum" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
                     <span class="help-block">
                         <%--<asp:RequiredFieldValidator ID="rfvTxtRequestNum" runat="server" ErrorMessage="Заполните поле &laquo;№ требования&raquo;" ControlToValidate="txtRequestNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                         <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
