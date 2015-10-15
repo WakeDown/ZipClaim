@@ -13,6 +13,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls;
 using Microsoft.AspNet.FriendlyUrls.ModelBinding;
+using Newtonsoft.Json;
 using ZipClaim.Helpers;
 using ZipClaim.Models;
 using ZipClaim.Objects;
@@ -194,7 +195,18 @@ namespace ZipClaim.WebForms.Claims
                     MainHelper.DdlSetSelectedValue(ref ddlEngeneerConclusion, devStateVal);
                 }
 
-
+                if (Request.QueryString["zip"] != null)
+                {
+                    string zipListStr = Request.QueryString["zip"];
+                    var zipList = JsonConvert.DeserializeObject<IEnumerable<ZipItem>>(zipListStr);
+                    hfZipList.Value = zipListStr;
+                    txtDescr.Text += "Список ЗИП из сервисного листа:";
+                    foreach (var item in zipList)
+                    {
+                        txtDescr.Text += $"\r\n{item.PartNum} - {item.Name} - {item.Count}";
+                    }
+                    txtDescr.Enabled = false;
+                }
             }
 
             //sdsList.UpdateParameters["id_creator"].DefaultValue = User.Id.ToString();
@@ -489,6 +501,13 @@ namespace ZipClaim.WebForms.Claims
             claim.ServiceIdClaim = MainHelper.HfGetValue(ref hfIdServClaim);
 
             claim.IdCreator = User.Id;
+
+
+            if (!String.IsNullOrEmpty(hfZipList.Value))
+            {
+                var zipList = JsonConvert.DeserializeObject<IEnumerable<ZipItem>>(hfZipList.Value);
+                claim.ZipItemList = zipList;
+            }
 
             return claim;
         }

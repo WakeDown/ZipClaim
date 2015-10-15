@@ -57,7 +57,10 @@ namespace ZipClaim.Models
         public bool HideTop { get; set; }
         public string ServiceIdServSheet { get; set; }
         public string ServiceIdClaim { get; set; }
-
+        /// <summary>
+        /// Вы этот объект передается список ЗИПов из сервисного листа программы Сервис-Инциденты
+        /// </summary>
+        public IEnumerable<ZipItem> ZipItemList { get; set; } 
 
         public Claim()
         {
@@ -182,6 +185,15 @@ namespace ZipClaim.Models
             if (dt.Rows.Count > 0)
             {
                 Id = (int)dt.Rows[0]["id_claim"];
+            }
+
+            if (ZipItemList.Any())
+            {
+                foreach (var item in ZipItemList)
+                {
+                    var claimUnit = new ClaimUnit() {IdClaim= Id, CatalogNum = item.PartNum, Count = item.Count, Name=item.Name, IdCreator = IdCreator};
+                    claimUnit.Save();
+                }
             }
         }
 

@@ -28,7 +28,10 @@ namespace ZipClaim.Models
 
         public int IdClaimUnitInfo { get; set; }
         public string Descr { get; set; }
-        
+        /// <summary>
+        /// идентификатор из Сервис-Инциденты
+        /// </summary>
+        public int IdZipItem { get; set; }
 
         public ClaimUnit()
         {

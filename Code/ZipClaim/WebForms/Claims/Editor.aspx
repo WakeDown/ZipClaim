@@ -12,6 +12,7 @@
   <li><a href="#">Оборудование</a></li>
 </ul>
      <div>--%>
+    <asp:HiddenField ID="hfZipList" runat="server" />
     <asp:HiddenField ID="hfServSheetId" runat="server" />
      <asp:HiddenField ID="hfIdServClaim" runat="server" />
     <asp:HiddenField ID="hfContractNumAmdDate" runat="server" />
