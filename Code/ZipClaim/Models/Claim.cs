@@ -187,7 +187,7 @@ namespace ZipClaim.Models
                 Id = (int)dt.Rows[0]["id_claim"];
             }
 
-            if (ZipItemList.Any())
+            if (ZipItemList != null && ZipItemList.Any())
             {
                 foreach (var item in ZipItemList)
                 {
