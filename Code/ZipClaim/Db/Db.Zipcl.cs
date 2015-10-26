@@ -117,6 +117,16 @@ namespace ZipClaim.Db
                 return dt;
             }
 
+            public static DataTable GetClaimUnitReport(int? idContractor, DateTime? dateBegin, DateTime? dateEnd)
+            {
+                SqlParameter pIdContractor = new SqlParameter() { ParameterName = "id_contractor", Value = idContractor, DbType = DbType.Int32 };
+                SqlParameter pDateBegin = new SqlParameter() { ParameterName = "date_begin", Value = dateBegin, DbType = DbType.DateTime };
+                SqlParameter pDateEnd = new SqlParameter() { ParameterName = "date_end", Value = dateEnd, DbType = DbType.DateTime };
+
+                DataTable dt = ExecuteQueryStoredProcedure(Zipcl.spReports, "getClaimUnitReport", pIdContractor, pDateBegin, pDateEnd);
+                return dt;
+            }
+
             public static DataTable GetLastClaimDaysCount(/*int idDevice,*/ string serialNum, string catalogNum)
             {
                 //SqlParameter pIdDevice = new SqlParameter() { ParameterName = "id_device", Value = idDevice, DbType = DbType.Int32 };

@@ -51,7 +51,8 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <asp:LinkButton ID="btnLoadExcel" runat="server" class="btn btn-primary btn-sm" OnClick="btnLoadExcel_OnClick" ValidationGroup="vgFilter"><i class="fa fa-file-excel-o"></i>&nbsp;выгрузить в Excel</asp:LinkButton>
+                <asp:LinkButton ID="btnLoadExcel" runat="server" class="btn btn-primary btn-sm" OnClick="btnLoadExcel_OnClick" ValidationGroup="vgFilter"><i class="fa fa-file-excel-o"></i>&nbsp;Отчет по заявкам</asp:LinkButton>
+                <asp:LinkButton ID="btnLoadClaimUnitExcel" runat="server" class="btn btn-primary btn-sm" OnClick="btnLoadClaimUnitExcel_OnClick" ValidationGroup="vgFilter"><i class="fa fa-file-excel-o"></i>&nbsp;Отчет по ЗИП</asp:LinkButton>
             </div>
         </div>
     </div>
