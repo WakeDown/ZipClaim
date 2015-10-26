@@ -57,6 +57,7 @@ namespace ZipClaim.Models
         public bool HideTop { get; set; }
         public string ServiceIdServSheet { get; set; }
         public string ServiceIdClaim { get; set; }
+        public bool Enabled { get; set; }
         /// <summary>
         /// Вы этот объект передается список ЗИПов из сервисного листа программы Сервис-Инциденты
         /// </summary>
@@ -126,6 +127,7 @@ namespace ZipClaim.Models
                 ContractorSdNum = dr["contractor_sd_num"].ToString();
                 IdContract = GetValueIntOrNull(dr["id_contract"].ToString());
                 HideTop = GetValueBool(dr["hide_top"].ToString());
+                Enabled = GetValueBool(dr["enabled"].ToString());
 
                 //SqlParameter pIdClaim = new SqlParameter() { ParameterName = "id_claim", Value = id, DbType = DbType.Int32 };
                 //dt = ExecuteQueryStoredProcedure(Zipcl.sp, "getClaimStateHistory", pIdClaim);

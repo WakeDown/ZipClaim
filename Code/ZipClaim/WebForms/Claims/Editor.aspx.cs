@@ -124,6 +124,12 @@ namespace ZipClaim.WebForms.Claims
             }
         }
 
+        private bool claimEnabled
+        {
+            get { return Convert.ToBoolean(hfEnabled.Value); }
+            set { hfEnabled.Value = value.ToString(); }
+        }
+
         protected new void Page_Load(object sender, EventArgs e)
         {
             base.Page_Load(sender, e);
@@ -154,6 +160,7 @@ namespace ZipClaim.WebForms.Claims
                 if (Id > 0)
                 {
                     claim = new Claim(Id);
+                    claimEnabled = claim.Enabled;
                     FillContractorList(claim.IdContractor);
                     fillCtrs = true;
                     FillFormData(claim);
@@ -227,6 +234,32 @@ namespace ZipClaim.WebForms.Claims
             }
 
             DisplayFormParts();
+            
+            if (!claimEnabled)
+            {
+                //Убираем все кнопки чтобы если заявка удалена то нельзя было отредактировать
+                formBtns.Visible = false;
+                claimBtns.Visible = false;
+                btnCancelState.Visible = false;
+                btnAddNewOftenSelected.Visible = false;
+
+                foreach (GridViewRow row in tblClaimUnitList.Rows)
+                {
+                    var delBtn = row.FindControl("btnClaimUnitDelete");
+                    if (delBtn is LinkButton)
+                    {
+                        delBtn.Visible = false;
+                    }
+
+                    var btnEdit = row.FindControl("btnEdit");
+                    if (btnEdit is LinkButton)
+                    {
+                        btnEdit.Visible = false;
+                    }
+                }
+
+                tblClaimUnitList.FooterRow.Visible = false;
+            }
         }
 
         //protected void btnCountersReport_Click(object sender, EventArgs e)

@@ -12,6 +12,7 @@
   <li><a href="#">Оборудование</a></li>
 </ul>
      <div>--%>
+    <asp:HiddenField ID="hfEnabled" runat="server" />
     <asp:HiddenField ID="hfZipList" runat="server" />
     <asp:HiddenField ID="hfServSheetId" runat="server" />
      <asp:HiddenField ID="hfIdServClaim" runat="server" />
@@ -305,7 +306,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="formBtns" runat="server">
             <div class="col-sm-offset-2 col-sm-10">
                 <asp:LinkButton ID="btnSave" runat="server" class="btn btn-primary btn-lg" data-toggle="tooltip" title="сохранить" OnClick="btnSave_Click" ValidationGroup="vgForm"><i class="fa fa-save fa-lg"></i></asp:LinkButton>
                 <%--<asp:LinkButton ID="btnSaveAndAddNew" runat="server" class="btn btn-primary btn-lg" data-toggle="tooltip" title="сохранить и очистить" OnClick="btnSaveAndAddNew_Click" ValidationGroup="vgForm"><i class="fa fa-save fa-lg"></i>&nbsp;<i class="fa fa-plus fa-sm"></i></asp:LinkButton>--%>
@@ -770,7 +771,6 @@
                                             <asp:Label ID="lblPriceOutSum" runat="server" Text='<%#Eval("price_out_sum") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
                                     <asp:TemplateField ItemStyle-CssClass="min-width" FooterStyle-CssClass="min-width" HeaderStyle-CssClass="middle">
                                         <EditItemTemplate>
                                             <asp:LinkButton ID="btnSave" runat="server" CommandName="Update" RowIndex='<%#Container.DataItemIndex %>' OnClick="btnSave_OnClick" CommandArgument='<%#Eval("id_claim_unit") %>' CssClass="btn btn-link" data-toggle="tooltip" title="сохранить"><i class="fa fa-save fa-lg"></i></asp:LinkButton>
@@ -803,7 +803,7 @@
                     </blockquote>
                 </div>
             </div>
-            <div>
+            <div id="claimBtns" runat="server">
                 <div class="pull-right">
                     <asp:HiddenField ID="hfDisplaySendState" runat="server" />
                     <asp:LinkButton ID="btnSetStateSend" runat="server" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Передать в работу" OnClick="btnSetStateSend_Click"><i class="fa fa-share fa-2x"></i></asp:LinkButton>
