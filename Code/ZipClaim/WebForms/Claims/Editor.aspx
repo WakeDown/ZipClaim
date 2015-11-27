@@ -732,6 +732,11 @@
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblDeliveryTime" runat="server" Text='<%#Bind("delivery_time") %>'></asp:Label>
+
+                                            <div>
+<%--                                                <span class="bold text-danger">Комментарий</span>--%>
+                                            <asp:Label ID="Label1" runat="server" CssClass="text-danger" Text='<%#Bind("supply_descr") %>'></asp:Label>
+                                                </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
 

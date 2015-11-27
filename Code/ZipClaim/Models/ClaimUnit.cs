@@ -25,7 +25,7 @@ namespace ZipClaim.Models
         public string NomenclatureClaimNum { get; set; }
         public int IdSupplyMan { get; set; }
         public bool NoNomenclatureNum { get; set; }
-
+        public string SupplyDescr { get; set; }
         public int IdClaimUnitInfo { get; set; }
         public string Descr { get; set; }
         /// <summary>
@@ -69,6 +69,7 @@ namespace ZipClaim.Models
                 DeliveryTime = dr["delivery_time"].ToString();
                 NomenclatureClaimNum = dr["nomenclature_claim_num"].ToString();
                 NoNomenclatureNum = GetValueBool(dr["no_nomenclature_num"]);
+                SupplyDescr = dr["supply_descr"].ToString();
                 //IdSupplyMan = 
             }
         }
@@ -94,8 +95,9 @@ namespace ZipClaim.Models
             SqlParameter pNomenclatureClaimNum = new SqlParameter() { ParameterName = "nomenclature_claim_num", Value = NomenclatureClaimNum, DbType = DbType.AnsiString };
             SqlParameter pIdSupplyMan = new SqlParameter() { ParameterName = "id_supply_man", Value = IdSupplyMan, DbType = DbType.Int32 };
             SqlParameter pNoNomenclatureNum = new SqlParameter() { ParameterName = "no_nomenclature_num", Value = NoNomenclatureNum, DbType = DbType.Boolean };
+            SqlParameter pSupplyDescr = new SqlParameter() { ParameterName = "supply_descr", Value = SupplyDescr, DbType = DbType.AnsiString };
 
-            DataTable dt = ExecuteQueryStoredProcedure(Zipcl.sp, "saveClaimUnit", pId, pIdClaim, pCatalogNum, pName, pCount, pNomenclatureNum, pPriceIn, pPriceOut, pIdCreator, pDeliveryTime, pFromTop, pNomenclatureClaimNum, pIdSupplyMan, pNoNomenclatureNum);
+            DataTable dt = ExecuteQueryStoredProcedure(Zipcl.sp, "saveClaimUnit", pId, pIdClaim, pCatalogNum, pName, pCount, pNomenclatureNum, pPriceIn, pPriceOut, pIdCreator, pDeliveryTime, pFromTop, pNomenclatureClaimNum, pIdSupplyMan, pNoNomenclatureNum, pSupplyDescr);
 
 
             if (dt.Rows.Count > 0)

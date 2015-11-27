@@ -126,7 +126,7 @@ namespace ZipClaim.WebForms.Claims
 
         private bool claimEnabled
         {
-            get { return Convert.ToBoolean(hfEnabled.Value); }
+            get { return String.IsNullOrEmpty(hfEnabled.Value) || Convert.ToBoolean(hfEnabled.Value); }
             set { hfEnabled.Value = value.ToString(); }
         }
 

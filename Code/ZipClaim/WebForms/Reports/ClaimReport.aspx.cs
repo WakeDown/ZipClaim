@@ -101,7 +101,9 @@ protected void btnLoadClaimUnitExcel_OnClick(object sender, EventArgs e)
             sheet.Column(col).Width = 15;
             sheet.Cell(row, ++col).Value = "Контрагент";
             sheet.Column(col).Width = 30;
-            sheet.Cell(row, ++col).Value = "ID Контрагента";
+            sheet.Cell(row, ++col).Value = "№ SD Контрагента";
+            sheet.Column(col).Width = 10;
+            sheet.Cell(row, ++col).Value = "№ SD UN1T";
             sheet.Column(col).Width = 10;
             sheet.Cell(row, ++col).Value = "Город";
             sheet.Column(col).Width = 20;
@@ -170,7 +172,8 @@ protected void btnLoadClaimUnitExcel_OnClick(object sender, EventArgs e)
                 sheet.Cell(row, ++col).Value = dr["device_model"].ToString();
                 sheet.Cell(row, ++col).Value = dr["serial_num"].ToString();
                 sheet.Cell(row, ++col).Value = dr["contractor"].ToString();
-                sheet.Cell(row, ++col).Value = dr["id_contractor"].ToString();
+                sheet.Cell(row, ++col).Value = dr["contractor_sd_num"].ToString();
+                sheet.Cell(row, ++col).Value = dr["service_desk_num"].ToString();
                 sheet.Cell(row, ++col).Value = dr["city"].ToString();
                 sheet.Cell(row, ++col).Value = dr["ADDRESS"].ToString();
                 sheet.Cell(row, ++col).Value = dr["engeneer"].ToString();
@@ -237,7 +240,9 @@ protected void btnLoadClaimUnitExcel_OnClick(object sender, EventArgs e)
             sheet.Column(col).Width = 15;
             sheet.Cell(row, ++col).Value = "Контрагент";//5
             sheet.Column(col).Width = 30;
-            sheet.Cell(row, ++col).Value = "ID Контрагента";
+            sheet.Cell(row, ++col).Value = "№ SD Контрагента";
+            sheet.Column(col).Width = 10;
+            sheet.Cell(row, ++col).Value = "№ SD UN1T";
             sheet.Column(col).Width = 10;
             sheet.Cell(row, ++col).Value = "Город";
             sheet.Column(col).Width = 20;
@@ -301,7 +306,8 @@ protected void btnLoadClaimUnitExcel_OnClick(object sender, EventArgs e)
                 sheet.Cell(row, ++col).Value = dr["device_model"].ToString();
                 sheet.Cell(row, ++col).Value = dr["serial_num"].ToString();
                 sheet.Cell(row, ++col).Value = dr["contractor"].ToString();
-                sheet.Cell(row, ++col).Value = dr["id_contractor"].ToString();
+                sheet.Cell(row, ++col).Value = dr["contractor_sd_num"].ToString();
+                sheet.Cell(row, ++col).Value = dr["service_desk_num"].ToString();
                 sheet.Cell(row, ++col).Value = dr["city"].ToString();
                 sheet.Cell(row, ++col).Value = dr["ADDRESS"].ToString();
                 sheet.Cell(row, ++col).Value = dr["engeneer"].ToString();

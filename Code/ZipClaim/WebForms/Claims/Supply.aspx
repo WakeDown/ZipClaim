@@ -123,6 +123,7 @@
                             <div>
                                 <asp:RequiredFieldValidator ID="rfvTxtDeliveryTime" runat="server" ErrorMessage="Укажите срок поставки" ControlToValidate="txtDeliveryTime" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgSupply" Enabled="false"></asp:RequiredFieldValidator>
                             </div>
+                            <asp:TextBox ID="txtSupplyDescr" runat="server" Text='<%#Bind("delivery_time") %>' CssClass="form-control" noautocopml Visible="False" placeholder="Комментарий"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
 

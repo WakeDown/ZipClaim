@@ -112,7 +112,7 @@ namespace ZipClaim.WebForms.Claims
                 if (currId == idClaimUnit)
                 {
                     row.FindControl("btnEdit").Visible = row.FindControl("lblPriceIn").Visible = row.FindControl("lblDeliveryTime").Visible = row.FindControl("btnReturn").Visible = !edit;
-                    row.FindControl("btnSave").Visible = row.FindControl("btnCancel").Visible = row.FindControl("txtPriceIn").Visible = row.FindControl("txtDeliveryTime").Visible = (row.FindControl("cvTxtPriceIn") as CompareValidator).Enabled = (row.FindControl("rfvTxtPriceIn") as RequiredFieldValidator).Enabled = (row.FindControl("rfvTxtDeliveryTime") as RequiredFieldValidator).Enabled = edit;
+                    row.FindControl("btnSave").Visible = row.FindControl("btnCancel").Visible = row.FindControl("txtPriceIn").Visible = row.FindControl("txtDeliveryTime").Visible = row.FindControl("txtSupplyDescr").Visible  = (row.FindControl("cvTxtPriceIn") as CompareValidator).Enabled = (row.FindControl("rfvTxtPriceIn") as RequiredFieldValidator).Enabled = (row.FindControl("rfvTxtDeliveryTime") as RequiredFieldValidator).Enabled = edit;
 
                     //Если Номенклатурный номер запрошен у Снабжения, то обязательно к заполнению
                     if ((row.FindControl("hfNoNomenclatureNum") as HiddenField).Value == "True")
@@ -232,6 +232,10 @@ namespace ZipClaim.WebForms.Claims
                 TextBox txtDeliveryTime = (TextBox)tblList.Rows[rowIndex].FindControl("txtDeliveryTime");
                 string deliveryTime = MainHelper.TxtGetText(ref txtDeliveryTime);
 
+                TextBox txtSupplyDescr = (TextBox)tblList.Rows[rowIndex].FindControl("txtSupplyDescr");
+                string supplyDescr = MainHelper.TxtGetText(ref txtSupplyDescr);
+                
+
                 TextBox txtNomenclatureNum = (TextBox)tblList.Rows[rowIndex].FindControl("txtNomenclatureNum");
                 string nomenclatureNum = MainHelper.TxtGetText(ref txtNomenclatureNum);
 
@@ -244,7 +248,8 @@ namespace ZipClaim.WebForms.Claims
                     IdCreator = User.Id,
                     Count = null,
                     NomenclatureNum = nomenclatureNum,
-                    IdSupplyMan = User.Id
+                    IdSupplyMan = User.Id,
+                    SupplyDescr= supplyDescr
                 };
 
                 try
