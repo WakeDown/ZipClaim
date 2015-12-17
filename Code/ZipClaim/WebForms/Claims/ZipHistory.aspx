@@ -3,9 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphMainContent" runat="server">
 
     <%-- Основные кнопки управления --%>
-    <div class="btn-toolbar " role="toolbar">
+    <%--<div class="btn-toolbar " role="toolbar">
         <asp:LinkButton ID="btnAddClaim" runat="server" CssClass="btn btn-primary btn-lg" OnClick="btnAddClaim_Click">новая заявка</asp:LinkButton>
-    </div>
+    </div>--%>
+    <blockquote class="alert-danger">С 1 декабря 2015 заказ ЗИП происходит в системе ServiceDesk <a href="https://serv.unitgroup.ru/">https://serv.unitgroup.ru/</a></blockquote>
     <hr class="smallmargin teeny" />
     <div class="form-horizontal val-form" role="form">
         <div class="form-group">

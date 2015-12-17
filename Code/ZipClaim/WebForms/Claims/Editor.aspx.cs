@@ -361,7 +361,14 @@ namespace ZipClaim.WebForms.Claims
 
             if (UserIsOperator || UserIsSysAdmin)
             {
-                txtRequestNum.Enabled = true;
+                if (!UserIsSysAdmin)
+                {
+                    txtRequestNum.Enabled = String.IsNullOrEmpty(txtRequestNum.Text);
+                }
+                else
+                {
+                    txtRequestNum.Enabled = true;
+                }
 
                 if (hfDisplayPriceSet.Value.Equals("True"))
                 {
