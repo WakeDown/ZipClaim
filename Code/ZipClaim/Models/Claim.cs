@@ -93,6 +93,7 @@ namespace ZipClaim.Models
                 DeviceModel = dr["device_model"].ToString();
                 Contractor = dr["contractor"].ToString();
                 City = dr["city"].ToString();
+                City = String.IsNullOrEmpty(City) ? "не указан" : City;
                 Address = dr["address"].ToString();
                 Counter = GetValueIntOrNull(dr["counter"].ToString());
                 IdEngeneerConclusion = (int)dr["id_engeneer_conclusion"];
