@@ -46,7 +46,7 @@
                 <span class="help-block">
                     <asp:RequiredFieldValidator ID="rfvTxtSerialNum" runat="server" ErrorMessage="Заполните поле &laquo;Серийный номер&raquo;" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>
                     <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
-                    <asp:RegularExpressionValidator ID="revTxtSerialNum" runat="server" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm" ErrorMessage="Допустимы только латинские буквы и цифры и символы &laquo;-&raquo;,&laquo;\&raquo;,&laquo;/&raquo;,&laquo; &raquo;(пробел)" ValidationExpression="^[A-Za-z0-9\ \-\\\/]+$"></asp:RegularExpressionValidator>
+<%--                    <asp:RegularExpressionValidator ID="revTxtSerialNum" runat="server" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm" ErrorMessage="Допустимы только латинские буквы и цифры и символы &laquo;-&raquo;,&laquo;\&raquo;,&laquo;/&raquo;,&laquo; &raquo;(пробел)" ValidationExpression="^[A-Za-z0-9\ \-\\\/]+$"></asp:RegularExpressionValidator>--%>
                 </span>
             </div>
         </div>

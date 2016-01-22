@@ -758,8 +758,9 @@ $('#oftenSelectedPanel').collapse('hide');
         {
             try
             {
+                int idCreator = User.Id;
                 int id = Convert.ToInt32((sender as LinkButton).CommandArgument);
-                new ClaimUnit().Delete(id);
+                new ClaimUnit().Delete(id, idCreator);
                 //RedirectWithParams();
                 tblClaimUnitList.DataBind();
             }

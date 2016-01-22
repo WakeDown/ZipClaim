@@ -116,14 +116,15 @@ namespace ZipClaim.Models
             ExecuteQueryStoredProcedure(Zipcl.sp, "saveClaimUnitInfo", pIdClaimUnitInfo, pCatalogNum, pDescr, pIdCreator);
         }
 
-        public void Delete(int id)
+        public void Delete(int id, int idCreator)
         {
             SqlParameter pId = new SqlParameter() { ParameterName = "id_claim_unit", Value = id, DbType = DbType.Int32 };
+            SqlParameter pIdCreator = new SqlParameter() { ParameterName = "id_creator", Value = IdCreator, DbType = DbType.Int32 };
 
-            ExecuteStoredProcedure(Zipcl.sp, "closeClaimUnit", pId);
+            ExecuteStoredProcedure(Zipcl.sp, "closeClaimUnit", pId, pIdCreator);
         }
 
-        public void Delete(int id, int idCreator)
+        public void Delete(int id)
         {
             throw new NotSupportedException();
         }
