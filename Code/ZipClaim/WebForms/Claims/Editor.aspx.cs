@@ -364,10 +364,12 @@ namespace ZipClaim.WebForms.Claims
                 if (!UserIsSysAdmin)
                 {
                     txtRequestNum.Enabled = String.IsNullOrEmpty(txtRequestNum.Text);
+                    txtWaybillNum.Enabled = String.IsNullOrEmpty(txtWaybillNum.Text);
                 }
                 else
                 {
                     txtRequestNum.Enabled = true;
+                    txtWaybillNum.Enabled = true;
                 }
 
                 if (hfDisplayPriceSet.Value.Equals("True"))

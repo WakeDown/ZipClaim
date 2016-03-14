@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Configuration;
 using System.Net.Mail;
 using System.Security;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Services.Description;
@@ -36,20 +37,47 @@ namespace ZipClaim.Helpers
 
             public static void SendMail(string toAddress, string subject, string text)
             {
-                var smtp = new SmtpClient();
-                smtp.Host = _smtpmailserver;
-                smtp.Port = _portnumber;
-                //smtp.EnableSsl = true;
-                //smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                //smtp.Credentials = new NetworkCredential("", "");
-                smtp.Timeout = 20000;
+                //var smtp = new SmtpClient();
+                //smtp.Host = _smtpmailserver;
+                //smtp.Port = _portnumber;
+                ////smtp.EnableSsl = true;
+                ////smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                ////smtp.Credentials = new NetworkCredential("", "");
+                //smtp.Timeout = 20000;
 
-                text = text.Replace("\r\n", "<br />").Replace("\r", "<br />").Replace("\n", "<br />");
+                //text = text.Replace("\r\n", "<br />").Replace("\r", "<br />").Replace("\n", "<br />");
 
-                MailMessage msg = new MailMessage(_fromAddress, toAddress, subject, text);
-                msg.IsBodyHtml = true;
+                //MailMessage msg = new MailMessage(_fromAddress, toAddress, subject, text);
+                //msg.IsBodyHtml = true;
 
-                smtp.Send(msg);
+                //smtp.Send(msg);
+
+                MailMessage mail = new MailMessage();
+                //foreach (MailAddress ma in to)
+                //{
+                //    mail.To.Add(ma);
+                //}
+                mail.To.Add(new MailAddress(toAddress));
+
+                mail.Subject = subject;
+                mail.Body = text;
+                mail.IsBodyHtml = true;
+                //if (form == null)
+                //{
+                mail.From = new MailAddress("delivery@unitgroup.ru");
+                //}
+                //else
+                //{
+                //    mail.From = form; 
+                //}
+
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Host = "smtp.office365.com";
+                client.Credentials = new NetworkCredential("delivery@unitgroup.ru", "pRgvD7TL");
+                Task.Run(() => client.Send(mail));
             }
 
         }
