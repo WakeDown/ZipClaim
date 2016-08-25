@@ -199,7 +199,7 @@
         <asp:Literal ID="lSummCountOut" runat="server" Text="0"></asp:Literal></span>
             </span>
     </h5>
-    <asp:GridView ID="tblList" runat="server" CssClass="table table-striped" DataSourceID="sdsList" AutoGenerateColumns="false"  GridLines="None" SortedAscendingHeaderStyle-CssClass="header-asc" SortedDescendingHeaderStyle-CssClass="header-desc" OnRowDataBound="tblList_RowDataBound" OnDataBound="tblList_DataBound">
+    <asp:GridView ID="tblList" runat="server" CssClass="table table-bordered table-striped" DataSourceID="sdsList" AutoGenerateColumns="false"  GridLines="None" SortedAscendingHeaderStyle-CssClass="header-asc" SortedDescendingHeaderStyle-CssClass="header-desc" OnRowDataBound="tblList_RowDataBound" OnDataBound="tblList_DataBound">
         <Columns>
             <asp:TemplateField ItemStyle-CssClass="min-width nowrap">
                 <ItemTemplate>
@@ -210,7 +210,8 @@
             <asp:TemplateField ItemStyle-CssClass="min-width" HeaderText="№ ServiceDesk" HeaderStyle-CssClass="sorted-header">
                 <ItemTemplate>
                     <div class="nowrap">
-                    <%# Eval("service_desk_num") %></div>
+                        <a href="<%# String.Format("{0}/Claim/Index/{1}", ConfigurationManager.AppSettings["ServiceUrl"], Eval("service_desk_num")) %>" target="_blank"><%# Eval("service_desk_num") %></a>
+                    </div>
                     <div class="nowrap">
                     <%# Eval("contractor_sd_num") %></div>
                 </ItemTemplate>

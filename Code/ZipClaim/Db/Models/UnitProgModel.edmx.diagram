@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c9b4e43c35f4795b9cb612025f1d012" Name="Diagram1">
+        <EntityTypeShape EntityType="unit_progModel.agr_agreements" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_contract_types" Width="1.5" PointX="3.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_doc_scan" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_doc_type_options" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_doc_type2doc_type_options" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_doc_types" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_documents" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_manager2agr_processes" Width="1.5" PointX="2.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_matchers" Width="1.5" PointX="6" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_matchers2schemes" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_proc_answers" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_processes" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_result_type" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_results" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_scheme_types" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_schemes" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_settings" Width="1.5" PointX="2.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_state_types" Width="1.5" PointX="17.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_states" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.agr_temp_nomails" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.cdet_call_details" Width="1.5" PointX="2.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.cities" Width="1.5" PointX="20.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.companies" Width="1.5" PointX="17.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.counter" Width="1.5" PointX="19.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.currency" Width="1.5" PointX="20.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.departments" Width="1.5" PointX="3.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.devinst_device_installs" Width="1.5" PointX="8.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.devinst_state_changes" Width="1.5" PointX="20.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.devinst_state_notify_recipients" Width="1.5" PointX="15.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.devinst_state_notifys" Width="1.5" PointX="20.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.devinst_states" Width="1.5" PointX="17.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.exchange_rate" Width="1.5" PointX="4.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.log_tab" Width="1.5" PointX="21.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.mlog_tab" Width="1.5" PointX="19.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.positions" Width="1.5" PointX="21.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.programs" Width="1.5" PointX="22.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.sended_mail_types" Width="1.5" PointX="22.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.sended_mails" Width="1.5" PointX="10.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.snmp_exchange_types" Width="1.5" PointX="12.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.snmp_exchanges" Width="1.5" PointX="22.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.snmp_requests" Width="1.5" PointX="22.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_addresses" Width="1.5" PointX="0.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_akt_scans" Width="1.5" PointX="23.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_cartridge_types" Width="1.5" PointX="14.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract_price_descounts" Width="1.5" PointX="16.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract_statuses" Width="1.5" PointX="23.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract_types" Width="1.5" PointX="24.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract_zip_states" Width="1.5" PointX="24.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract2devices" Width="1.5" PointX="21.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contracts" Width="1.5" PointX="23.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_data" Width="1.5" PointX="24.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_imprints" Width="1.5" PointX="2.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_models" Width="1.5" PointX="10.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_options" Width="1.5" PointX="25.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_types" Width="1.5" PointX="4.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device2options" Width="1.5" PointX="25.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_devices" Width="1.5" PointX="13" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_devices_import" Width="1.5" PointX="10.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_devices_no_graphik_load" Width="1.5" PointX="18.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_mobile_service_came" Width="1.5" PointX="25.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_payment_tariffs" Width="1.5" PointX="25.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_print_types" Width="1.5" PointX="26.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_action_types" Width="1.5" PointX="15.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_cames" Width="1.5" PointX="18" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_claim_statuses" Width="1.5" PointX="26.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_claim_types" Width="1.5" PointX="26.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_claims" Width="1.5" PointX="27.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_interval_plan_groups" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_intervals" Width="1.5" PointX="18" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_types" Width="1.5" PointX="6.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_zone2devices" Width="1.5" PointX="15.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_zone2users" Width="1.5" PointX="15" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_service_zones" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_settings" Width="1.5" PointX="12.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_tariff_features" Width="1.5" PointX="14.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_user_roles" Width="1.5" PointX="27.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_user2user_roles" Width="1.5" PointX="27.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.sysdiagrams" Width="1.5" PointX="27.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.user_groups" Width="1.5" PointX="28.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.user_states" Width="1.5" PointX="10.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.users" Width="1.5" PointX="13" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.users2et_users" Width="1.5" PointX="28.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.wd_holidays" Width="1.5" PointX="28.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.wd_short_days" Width="1.5" PointX="28.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.wd_work_holidays" Width="1.5" PointX="0.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.work_days" Width="1.5" PointX="2.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.work_hours" Width="1.5" PointX="29.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_state_changes" Width="1.5" PointX="16.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_states" Width="1.5" PointX="29.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_unit_infos" Width="1.5" PointX="18.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_unit_state_changes" Width="1.5" PointX="29.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_units" Width="1.5" PointX="29.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_engeneer_conclusions" Width="1.5" PointX="29.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_manager2operators" Width="1.5" PointX="25.75" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_nomenclature_price" Width="1.5" PointX="30.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_srvpl_contract_spec_prices" Width="1.5" PointX="30.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_user_filters" Width="1.5" PointX="30.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_zip_claims" Width="1.5" PointX="20.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_zip_group2cat_nums" Width="1.5" PointX="31.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_zip_groups" Width="1.5" PointX="4.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.cities_load" Width="1.5" PointX="6.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_model_max_volume_load" Width="1.5" PointX="8.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteContractorList_curr_month_cache" Width="1.5" PointX="10.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteServAdminContractorList_curr_month_cache" Width="1.5" PointX="12.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteServManagerContractorList_curr_month_cache" Width="1.5" PointX="31.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.tmp_device_counter_error" Width="1.5" PointX="31.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_numenclature_change" Width="1.5" PointX="31.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.report" Width="1.5" PointX="27.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.report_agr_route" Width="1.5" PointX="31.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.report_calls" Width="1.5" PointX="32.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_active_device_coord_report" Width="1.5" PointX="0.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_active_device_report" Width="1.5" PointX="32.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_cames_report" Width="1.5" PointX="22.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contract_devices" Width="1.5" PointX="29.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_contracts_report" Width="1.5" PointX="32.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_data_view" Width="1.5" PointX="31.75" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_list" Width="1.5" PointX="33.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_model_with_classifier" Width="1.5" PointX="14.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_device_price_report" Width="1.5" PointX="16.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_devices_data_pivot" Width="1.5" PointX="33.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_devices_no_plan" Width="1.5" PointX="33.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getEngeneerAllocList__curr_month" Width="1.5" PointX="33.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getEngeneerDayAlloc_curr_month" Width="1.5" PointX="24.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteContractorList_curr_month" Width="1.5" PointX="33.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteDeviceList_curr_month" Width="1.5" PointX="6.75" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteServAdminContractorList_curr_month" Width="1.5" PointX="34.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_getPlanExecuteServManagerContractorList_curr_month" Width="1.5" PointX="34.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_payment_report" Width="1.5" PointX="33.75" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.srvpl_plan_report" Width="1.5" PointX="35.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zip_state_history_view" Width="1.5" PointX="2.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claim_unit_report" Width="1.5" PointX="8.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_claims_report" Width="1.5" PointX="10.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_counter_report" Width="1.5" PointX="35.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="unit_progModel.zipcl_units_report" Width="1.5" PointX="35.75" PointY="21.375" IsExpanded="true" />
+        <AssociationConnector Association="unit_progModel.FK_agr_agreements_agr_documents1" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_agreements_agr_schemes" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_agreements_agr_states" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_processes_agr_agreements" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_contracts_contract_types" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_doc_type2doc_type_options_agr_doc_type_options" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_doc_type2doc_type_options_agr_doc_types" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_contracts_agr_doc_types" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_contracts_departments" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_matchers2schemes_agr_matchers" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_matchers2schemes_agr_schemes" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_processes_agr_results" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_agr_results_agr_result_type" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_srvpl_devices_srvpl_device_models" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_srvpl_service_zone2devices_srvpl_devices" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_srvpl_service_cames_srvpl_service_action_types" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_srvpl_service_intervals_srvpl_service_interval_plan_group" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_srvpl_service_zone2users_srvpl_service_zones" ManuallyRouted="false" />
+        <AssociationConnector Association="unit_progModel.FK_users_user_states" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="unit_progModel.claim_unit_zip_data" Width="1.5" PointX="36.375" PointY="29.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

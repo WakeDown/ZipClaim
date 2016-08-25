@@ -40,10 +40,19 @@ namespace ZipClaim.WebForms.Masters
         private const string supplyManRightGroupVSKey = "supplyManRightGroupVSKey";
         string supplyManRightGroup = ConfigurationManager.AppSettings["supplyManRightGroup"];
 
+        private const string zipDataRightGroupVSKey = "zipDataRightGroupVSKey";
+        string zipDataRightGroup = ConfigurationManager.AppSettings["zipDataRightGroup"];
+
         protected bool UserIsSupplyMan
         {
             get { return (bool)ViewState[supplyManRightGroupVSKey]; }
             set { ViewState[supplyManRightGroupVSKey] = value; }
+        }
+
+        protected bool UserIsZipData
+        {
+            get { return (bool)ViewState[zipDataRightGroupVSKey]; }
+            set { ViewState[zipDataRightGroupVSKey] = value; }
         }
 
         protected bool UserIsServiceAdmin
@@ -131,6 +140,7 @@ namespace ZipClaim.WebForms.Masters
                 UserIsEngeneer = Db.Db.Users.CheckUserRights(User.Login, serviceEngeneersRightGroup);
                 UserIsSysAdmin = Db.Db.Users.CheckUserRights(User.Login, sysAdminRightGroup);
                 UserIsSupplyMan = Db.Db.Users.CheckUserRights(User.Login, supplyManRightGroup);
+                UserIsZipData = Db.Db.Users.CheckUserRights(User.Login, zipDataRightGroup); 
                 UserIsTech = Db.Db.Users.CheckUserRights(User.Login, null, techRightGroup);
 
                 //Зашел клиент
@@ -149,7 +159,7 @@ namespace ZipClaim.WebForms.Masters
                     liClaims.Visible = liZipHistory.Visible = false;
                 }
 
-                if (!UserIsClient && !UserIsEngeneer && !UserIsManager && !UserIsOperator && !UserIsSysAdmin && !UserIsServiceAdmin && !UserIsSupplyMan)
+                if (!UserIsClient && !UserIsEngeneer && !UserIsManager && !UserIsOperator && !UserIsSysAdmin && !UserIsServiceAdmin && !UserIsSupplyMan && !UserIsZipData)
                 {
                     Response.Redirect(FriendlyUrl.Href("~/ErrorGrp"));
                 }
@@ -183,6 +193,12 @@ namespace ZipClaim.WebForms.Masters
                     Response.Redirect(FriendlyUrl.Href("~/Claims/Supply"));
                 }
 
+                //Автопереход для снабжения на страницу Номенклатура
+                if ((UserIsZipData /*|| userIsSysAdmin*/) && Request.Path.Equals("/"))
+                {
+                    Response.Redirect(FriendlyUrl.Href("~/Claims/ZipData"));
+                }
+
                 LoadFormSettings();
                 SetUserName();
 
@@ -209,11 +225,12 @@ namespace ZipClaim.WebForms.Masters
             liClaims.Visible = UserIsEngeneer || UserIsManager || UserIsOperator || UserIsSysAdmin || UserIsServiceAdmin;
             liZipHistory.Visible = UserIsEngeneer || UserIsSysAdmin;
             liSupply.Visible = UserIsSysAdmin || UserIsSupplyMan;
+            liZipData.Visible = UserIsSysAdmin || UserIsZipData;
             liSettings.Visible = UserIsSysAdmin;
             pnlClientFeed.Visible = UserIsClient;
             pnlSd.Visible = !UserIsClient;
             liDownloadSettings.Visible = UserIsClient && ClientCounterView;
-            liReports.Visible = UserIsSysAdmin || UserIsManager;
+            liReports.Visible = UserIsSysAdmin || UserIsManager || UserIsOperator;
         }
 
         private void SetUserName()

@@ -85,6 +85,15 @@ namespace ZipClaim.WebForms.Claims {
         protected global::System.Web.UI.WebControls.TextBox txtServiceDeskNum;
         
         /// <summary>
+        /// linkServiceDeskNumPh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder linkServiceDeskNumPh;
+        
+        /// <summary>
         /// txtContractorSdNum control.
         /// </summary>
         /// <remarks>

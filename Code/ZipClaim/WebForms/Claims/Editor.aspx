@@ -16,18 +16,30 @@
     <asp:HiddenField ID="hfZipList" runat="server" />
     <asp:HiddenField ID="hfServSheetId" runat="server" />
      <asp:HiddenField ID="hfIdServClaim" runat="server" />
+    
     <asp:HiddenField ID="hfContractNumAmdDate" runat="server" />
     <asp:HiddenField ID="hfIdDevice" runat="server" />
     <div class="form-horizontal val-form" role="form">
         <div class="form-group">
-            <label for='<%=txtServiceDeskNum.ClientID %>' class="col-sm-2 control-label">№ SD UN1T</label>
+            <label for='<%=txtServiceDeskNum.ClientID %>' class="col-sm-2 control-label">№ SD UN1T
+               
+                
+<%--                <a href="<%# String.Format("{0}/Claim/Index/{1}", ConfigurationManager.AppSettings["ServiceUrl"], Eval("service_desk_num")) %>" target="_blank"></a>--%>
+                   
+            </label>
             <div class="col-sm-10">
                 <asp:TextBox ID="txtServiceDeskNum" runat="server" CssClass="form-control" MaxLength="20"></asp:TextBox>
+                <br/>
+                <asp:PlaceHolder ID="linkServiceDeskNumPh" runat="server"></asp:PlaceHolder>
+<%--                 <br />
+                <asp:LinkButton ID="linkServiceDeskNum" runat="server"></asp:LinkButton>--%>
                 <span class="help-block">
                     <%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Заполните поле &laquo;Серийный номер&raquo;" ControlToValidate="txtSerialNum" Display="Dynamic" CssClass="text-danger" SetFocusOnError="True" ValidationGroup="vgForm"></asp:RequiredFieldValidator>--%>
                     <%--                    <asp:CompareValidator ID="cvTxtSpeed" runat="server" ErrorMessage="Введите число" CssClass="text-danger" ControlToValidate="txtSpeed" Type="Integer" Operator="DataTypeCheck" Display="Dynamic" SetFocusOnError="True" ValidationGroup="vgForm"></asp:CompareValidator>--%>
                 </span>
+
             </div>
+            
         </div>
         <div class="form-group">
             <label for='<%=txtContractorSdNum.ClientID %>' class="col-sm-2 control-label">№ SD Контрагента</label>
@@ -839,7 +851,7 @@
                     <asp:RegularExpressionValidator ID="cvTxtCancelComment" runat="server" ErrorMessage="Длина причины должна быть не менее 10 символов" ControlToValidate="txtCancelComment" Display="Dynamic" SetFocusOnError="True" CssClass="text-danger" ValidationGroup="vgCancel" Operator="GreaterThan" ValidationExpression="^[\s\S]{10,500}$"></asp:RegularExpressionValidator>--%>
                     <asp:RadioButtonList ID="rblCancelComment" runat="server">
                         <asp:ListItem Enabled="True" Selected="False" Text="Покупка ЗИП не предусмотрена договором" Value="Покупка ЗИП не предусмотрена договором" />
-                        <asp:ListItem Enabled="True" Selected="False" Text="Отгружен из резервов" Value="Отгружен из резервов" />
+<%--                        <asp:ListItem Enabled="True" Selected="False" Text="Отгружен из резервов" Value="Отгружен из резервов" />--%>
                         <asp:ListItem Enabled="True" Selected="False" Text="Заказчик не согласовал закупку" Value="Заказчик не согласовал закупку" />
                         <asp:ListItem Enabled="True" Selected="False" Text="Аппарат на списание" Value="Аппарат на списание" />
                         <asp:ListItem Enabled="True" Selected="False" Text="Ресурс ЗИПа не пройден" Value="Ресурс ЗИПа не пройден" />

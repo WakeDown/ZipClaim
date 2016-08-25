@@ -10,6 +10,7 @@ using System.Net.Mime;
 using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls;
 using Microsoft.AspNet.FriendlyUrls.ModelBinding;
@@ -476,6 +477,8 @@ namespace ZipClaim.WebForms.Claims
             bool isNewClaim = !(Id > 0);
 
             Claim claim = GetFormData();
+            if (String.IsNullOrEmpty(claim.RequestNum)) claim.RequestNum = "-999";
+            if (String.IsNullOrEmpty(claim.WaybillNum)) claim.WaybillNum = "-999";
             //if (!String.IsNullOrEmpty(claim.RequestNum)) claim.SetRequestNumState();
             claim.Save();
             //if (!String.IsNullOrEmpty(claim.RequestNum)) claim.SetRequestNumState();
@@ -597,6 +600,13 @@ namespace ZipClaim.WebForms.Claims
             MainHelper.TxtSetText(ref txtRequestNum, claim.RequestNum);
             if (!String.IsNullOrEmpty(txtRequestNum.Text)) txtRequestNum.Enabled = false;
             MainHelper.TxtSetText(ref txtServiceDeskNum, claim.ServiceDeskNum, false);
+            var link = new HtmlAnchor();
+            link.HRef = String.Format("{0}/Claim/Index/{1}", ConfigurationManager.AppSettings["ServiceUrl"], claim.ServiceDeskNum);
+            link.Target = "_blank";
+            link.InnerText = $"Ссылка на заявку АИС №{claim.ServiceDeskNum}" ;
+            linkServiceDeskNumPh.Controls.Add(link); 
+            
+            //MainHelper.TxtSetText(ref txtServiceDeskNum, claim.ServiceDeskNum, false);
             if (!String.IsNullOrEmpty(txtServiceDeskNum.Text)) txtServiceDeskNum.Enabled = false;
 
             MainHelper.TxtSetText(ref txtCounterColour, claim.CounterColour, false);

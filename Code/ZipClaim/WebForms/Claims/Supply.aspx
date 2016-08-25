@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/Masters/List.master" AutoEventWireup="true" CodeBehind="Supply.aspx.cs" Inherits="ZipClaim.WebForms.Claims.Supply" %>
+﻿<%@ Page Title="Номенклатура ЗИП" Language="C#" MasterPageFile="~/WebForms/Masters/List.master" AutoEventWireup="true" CodeBehind="Supply.aspx.cs" Inherits="ZipClaim.WebForms.Claims.Supply" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 

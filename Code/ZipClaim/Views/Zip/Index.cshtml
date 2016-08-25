@@ -1,0 +1,58 @@
+﻿@using System.Configuration
+@using Helpers
+@model IEnumerable<ZipClaim.Db.Models.claim_unit_zip_data>
+@{
+    Layout = null;
+    string url4Modify = ConfigurationManager.AppSettings["ZipClaimUrl"] + "Claims/ZipData" + "?" + Request.QueryString;
+}
+<p>
+    <div class="btn-group btn-group-sm">
+        <a class="btn  @(Request.QueryString["erphandled"] == "1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", 1}})">Есть в ERP</a>
+        <a class="btn  @(Request.QueryString["erphandled"] == "0" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", 0}})">Нет в ERP</a>
+        <a class="btn  @(Request.QueryString["erphandled"] == "-1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", "-1"}})">Все</a>
+    </div>
+    <div class="btn-group btn-group-sm pull-right" role="group" aria-label="">
+        <a style="width: 34%" param="psize" value="30" class="hashupdate-js btn @(Request.QueryString["psize"] == "30" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 30}, {"page", 1}})">30</a>
+        <a style="width: 33%" param="psize" value="100" class="hashupdate-js btn @(Request.QueryString["psize"] == "100" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 100}, {"page", 1}})">100</a>
+        <a style="width: 34%" param="psize" value="300" class="hashupdate-js btn @(Request.QueryString["psize"] == "300" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 300}, {"page", 1}})">300</a>
+    </div>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr class="bg-primary">
+        <td>ID</td>
+        <td>№ заявки</td>
+        <td>Каталожный номер</td>
+        <td>Наименование</td>
+        <td>Номенклатурный номер</td>
+        <td>Есть в ERP</td>
+        <td></td>
+    </tr>
+    </thead>
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+         {
+             <tr>
+                 <td>@item.id_claim_unit</td>
+                 <td>@item.id_claim</td>
+                 <td>@item.catalog_num</td>
+                 <td>@item.name</td>
+                 <td>@item.nomenclature_num</td>
+                 <td>@(item.erp_handled ? "Да" : "Нет")</td>
+                 <td>
+                     @if (!item.erp_handled)
+                     {
+                         <button id="erpHandled" class="btn btn-warning btn-sm">Есть в ERP</button>
+                     }
+                 </td>
+             </tr>
+         }
+    }
+    else
+    {
+        <tr>
+            <td>пусто</td>
+        </tr>
+    }
+</table>

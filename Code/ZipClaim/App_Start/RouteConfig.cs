@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.AspNet.FriendlyUrls;
 
@@ -20,6 +21,7 @@ namespace ZipClaim
             routes.MapPageRoute("ClaimEditor", "Claims/Editor", "~/WebForms/Claims/Editor.aspx");
             routes.MapPageRoute("ClaimZipHistory", "Claims/ZipHistory", "~/WebForms/Claims/ZipHistory.aspx");
             routes.MapPageRoute("SupplyPriceRequest", "Claims/Supply", "~/WebForms/Claims/Supply.aspx");
+            routes.MapPageRoute("ZipData", "Claims/ZipData", "~/WebForms/Claims/ZipData.aspx");
 
             routes.MapPageRoute("ClientList", "Client", "~/WebForms/Client/List.aspx");
             routes.MapPageRoute("ClientDetail", "Client/Detail", "~/WebForms/Client/Detail.aspx");
@@ -50,6 +52,14 @@ namespace ZipClaim
             routes.MapPageRoute("Chk-intermediate_highlighted", "Images/Chk_tri_state/intermediate_highlighted.gif", "~/Images/Chk_tri_state/intermediate_highlighted.gif");
 
             #endregion
+
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

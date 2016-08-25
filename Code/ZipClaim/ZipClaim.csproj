@@ -60,21 +60,59 @@
       <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -101,10 +139,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <Private>True</Private>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
@@ -129,6 +163,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\validation.css" />
+    <Content Include="Db\Models\UnitProgModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UnitProgModel.edmx</DependentUpon>
+      <LastGenOutput>UnitProgModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Db\Models\UnitProgModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UnitProgModel.edmx</DependentUpon>
+      <LastGenOutput>UnitProgModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -153,7 +197,23 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Bundle.config" />
+    <EntityDeploy Include="Db\Models\UnitProgModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UnitProgModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Db\Models\UnitProgModel.edmx.diagram">
+      <DependentUpon>UnitProgModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="WebForms\Claims\Supply.aspx" />
+    <Content Include="WebForms\Claims\ZipData.aspx" />
     <Content Include="WebForms\Client\CounterDetail.aspx" />
     <Content Include="WebForms\Client\ListCounter.aspx" />
     <Content Include="WebForms\Reports\ClaimReport.aspx" />
@@ -164,6 +224,7 @@
     <None Include="Properties\PublishProfiles\1. Dev.pubxml" />
     <None Include="Properties\PublishProfiles\2. Test.pubxml" />
     <None Include="Properties\PublishProfiles\3. Production.pubxml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\filter-exp-mem.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -256,6 +317,11 @@
     <None Include="Project_Readme.html" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Zip\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -278,19 +344,524 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ZipController.cs" />
     <Compile Include="Db\Db.cs" />
     <Compile Include="Db\Db.Snmp.cs" />
     <Compile Include="Db\Db.Srvpl.cs" />
     <Compile Include="Db\Db.Unit.cs" />
     <Compile Include="Db\Db.Users.cs" />
     <Compile Include="Db\Db.Zipcl.cs" />
+    <Compile Include="Db\Models\agr_agreements.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_contract_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_documents.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_doc_scan.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_doc_type2doc_type_options.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_doc_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_doc_type_options.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_manager2agr_processes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_matchers.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_matchers2schemes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_processes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_proc_answers.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_results.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_result_type.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_schemes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_scheme_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_settings.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_states.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_state_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\agr_temp_nomails.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\cdet_call_details.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\cities.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\cities_load.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\claim_unit_zip_data.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\companies.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\counter.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\currency.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\departments.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\devinst_device_installs.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\devinst_states.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\devinst_state_changes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\devinst_state_notifys.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\devinst_state_notify_recipients.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\exchange_rate.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ExplodeDates_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_address_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_contractor_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_contractor_name_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_contractor_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_contract_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_contract_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_dates_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_device_info_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_device_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_device_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_month_dates_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_service_action_type_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_service_came_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\get_service_claim_list_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\hp_call_details_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\log_tab.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\mlog_tab.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\positions.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\programs.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\report_agr_route.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\report_calls.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\rep_agreements_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\sended_mails.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\sended_mail_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\sk_snmp_scanner_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\snmp_exchanges.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\snmp_exchange_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\snmp_requests.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\spCBRRates_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\Split_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_active_device_coord_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_active_device_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_addresses.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_akt_scans.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_cames_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_cartridge_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract2devices.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contracts.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contracts_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract_devices.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract_price_descounts.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract_statuses.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_contract_zip_states.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device2options.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_devices.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_devices_data_pivot.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_devices_import.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_devices_no_graphik_load.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_devices_no_plan.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_data.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_data_view.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_imprints.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_list.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_models.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_model_max_volume_load.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_model_with_classifier.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_options.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_price_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_device_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getEngeneerAllocList__curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getEngeneerDayAlloc_curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteContractorList_curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteContractorList_curr_month_cache.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteDeviceList_curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteServAdminContractorList_curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteServAdminContractorList_curr_month_cache.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteServManagerContractorList_curr_month.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_getPlanExecuteServManagerContractorList_curr_month_cache.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_get_service_claims_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_mobile_service_came.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_payment_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_payment_tariffs.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_plan_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_print_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_action_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_cames.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_claims.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_claim_statuses.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_claim_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_intervals.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_interval_plan_groups.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_types.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_zone2devices.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_zone2users.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_service_zones.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_settings.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_tariff_features.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_user2user_roles.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\srvpl_user_roles.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\sysdiagrams.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\tmp_device_counter_error.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_device_install_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_service_planing_2_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_service_planing_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_unit_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_zip_claims_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\ui_zip_claim_reports_Result.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\UnitProgModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitProgModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\UnitProgModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\UnitProgModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitProgModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\users.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\users2et_users.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\user_groups.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\user_states.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\wd_holidays.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\wd_short_days.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\wd_work_holidays.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\work_days.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\work_hours.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claims_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_states.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_state_changes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_units.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_unit_infos.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_unit_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_claim_unit_state_changes.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_counter_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_engeneer_conclusions.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_manager2operators.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_nomenclature_price.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_numenclature_change.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_srvpl_contract_spec_prices.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_units_report.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_user_filters.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_zip_claims.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_zip_group2cat_nums.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zipcl_zip_groups.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Models\zip_state_history_view.cs">
+      <DependentUpon>UnitProgModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\Services\ZipService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AdHelper.cs" />
     <Compile Include="Helpers\MainHelper.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Helpers\UrlHelperExtensions.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\ClaimUnit.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -350,6 +921,13 @@
     </Compile>
     <Compile Include="WebForms\Claims\Supply.aspx.designer.cs">
       <DependentUpon>Supply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Claims\ZipData.aspx.cs">
+      <DependentUpon>ZipData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Claims\ZipData.aspx.designer.cs">
+      <DependentUpon>ZipData.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Claims\ZipHistory.aspx.cs">
       <DependentUpon>ZipHistory.aspx</DependentUpon>
@@ -470,7 +1048,9 @@
       <DependentUpon>ZipGroups.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
