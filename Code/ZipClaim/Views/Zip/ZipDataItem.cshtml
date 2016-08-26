@@ -1,0 +1,29 @@
+﻿@model ZipClaim.Db.Models.claim_unit_zip_data
+    @{
+        Layout = null;
+        var item = Model;
+    }
+    
+<tr class="zip-data-item" zid="@item.id_claim_unit">
+    <td>@item.id_claim_unit</td>
+    <td>@item.id_claim</td>
+    <td>@item.catalog_num</td>
+    <td>@item.name</td>
+    <td>@item.nomenclature_num</td>
+    <td>
+        @(item.erp_handled ? "Есть" : "Нет")
+        @if (item.erp_handled)
+        {
+            <div>
+                <small class="nowrap">@(item.date_erp_handle.HasValue ? item.date_erp_handle.Value.ToString("dd.MM.yyyy") : "") - @(item.system_handle ? "Система" : item.erp_handled_user_name)</small>
+            </div>
+        }
+    </td>
+    <td>
+        @if (!item.erp_handled)
+        {
+            <a zuid="@item.id_claim_unit" class="btn btn-warning btn-sm erp-handled-js">Есть в ERP</a>
+        }
+    </td>
+</tr>
+

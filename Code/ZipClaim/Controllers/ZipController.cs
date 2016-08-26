@@ -10,9 +10,9 @@ namespace ZipClaim.Controllers
     public class ZipController : Controller
     {
         // GET: Zip
-        public ActionResult Index(int? page, int? psize, string erphandled)
+        public ActionResult Index(int? page, int? psize, string erphandled, string claimnum, string catnum)
         {
-            if (!page.HasValue) page = 1;
+            if (!page.HasValue)page = 1;
             if (!psize.HasValue) psize = 30;
             bool? isErpHandled = null;
             if (erphandled == "1") isErpHandled = true;
@@ -20,10 +20,28 @@ namespace ZipClaim.Controllers
             else if (erphandled == "-1") isErpHandled = null;
             else isErpHandled = false;
 
-
-            var list = ZipService.Instance().ClaimUnitGetList(page.Value, psize.Value, isErpHandled);
+            int totalCount;
+            var list = ZipService.Instance().ClaimUnitGetList(out totalCount, page.Value, psize.Value, isErpHandled, claimnum, catnum);
+            ViewBag.TotalCount = totalCount;
 
             return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult SetErpHandled(int id)
+        {
+            int userId;
+            int.TryParse(Session["UserId"].ToString(), out userId);
+            int[] ids = ZipService.Instance().ClaimUnitSetErpHandled(id, userId);
+            
+            return Json(ids);
+        }
+
+        [HttpPost]
+        public ActionResult ZipDataItem(int id)
+        {
+            var model = ZipService.Instance().ClaimUnitGet(id);
+            return View(model);
         }
     }
 }

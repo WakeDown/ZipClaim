@@ -18,13 +18,15 @@ namespace ZipClaim.Objects
             if (Page.Master is Site)
             {
                 (Page.Master as Site).User = value;
-            }
+                    Session["UserId"] = value.Id;
+                }
             if (Page.Master.Master is Site)
             {
                 (Page.Master.Master as Site).User = value;
-            }
-            
+                    Session["UserId"] = value.Id;
+                }
 
+            
         } }
 
         //private bool isRefreshed = false;

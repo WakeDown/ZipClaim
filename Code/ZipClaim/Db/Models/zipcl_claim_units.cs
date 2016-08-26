@@ -38,5 +38,7 @@ namespace ZipClaim.Db.Models
         public string supply_descr { get; set; }
         public bool erp_handled { get; set; }
         public bool system_handle { get; set; }
+        public Nullable<System.DateTime> date_erp_handle { get; set; }
+        public Nullable<int> erp_handled_user_id { get; set; }
     }
 }

@@ -4,28 +4,81 @@
 @{
     Layout = null;
     string url4Modify = ConfigurationManager.AppSettings["ZipClaimUrl"] + "Claims/ZipData" + "?" + Request.QueryString;
+    int totalCount = ViewBag.TotalCount ?? 0;
+    int pageSize;
+    int.TryParse(Request.QueryString["psize"], out pageSize);
+    pageSize = pageSize <= 0 ? 30 : pageSize;
+    int pageCount = 0;
+    if (totalCount > 0 && pageSize > 0)
+    {
+        pageCount = totalCount / pageSize;
+        if (totalCount % pageSize > 0) { pageCount = pageCount + 1; }
+        if (pageCount < 1) { pageCount = 1; }
+    }
+    int curPage;
+    int.TryParse(Request.QueryString["page"], out curPage);
+    curPage = curPage <= 0 ? 1 : curPage;
+    int maxPagesCount = 4;
 }
 <p>
+    <div class="btn-group btn-group-sm" role="group" aria-label="" style="width: 200px;">
+        @if (totalCount > 0 && pageSize > 0)
+            {
+            <a class="btn btn-default @(curPage <= 1 ? "disabled" : "")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"page", curPage - 1}})">&laquo;</a>
+            for (int i = 0; i < pageCount; i++)
+            {
+                if (i < maxPagesCount)
+                {
+                    <a class="btn @(curPage == i + 1 ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"page", i + 1}})">@(i + 1)</a>
+                }
+                else
+                {
+                    <a class="btn @(curPage > maxPagesCount ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"page", i + 1}})">...</a>
+                    break;
+                }
+            }
+            <a class="btn btn-default @(curPage >= pageCount ? "disabled" : "")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"page", curPage + 1}})">&raquo;</a>
+        }
+        else
+        {
+            @:&nbsp;
+        }
+    </div>
     <div class="btn-group btn-group-sm">
-        <a class="btn  @(Request.QueryString["erphandled"] == "1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", 1}})">Есть в ERP</a>
-        <a class="btn  @(Request.QueryString["erphandled"] == "0" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", 0}})">Нет в ERP</a>
-        <a class="btn  @(Request.QueryString["erphandled"] == "-1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{ "erphandled", "-1"}})">Все</a>
+        <a class="btn  @(Request.QueryString["erphandled"] == "1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"erphandled", 1}})">Есть в ERP</a>
+        <a class="btn  @(Request.QueryString["erphandled"] == "0" || String.IsNullOrEmpty(Request.QueryString["erphandled"]) ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"erphandled", 0}})">Нет в ERP</a>
+        <a class="btn  @(Request.QueryString["erphandled"] == "-1" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"erphandled", "-1"}})">Все</a>
+    </div>
+    <div class="btn-group btn-group-sm">
+        <a id="removeFilter" class="btn btn-default"><i class="fa fa-remove"></i><i class="fa fa-filter"></i></a>
     </div>
     <div class="btn-group btn-group-sm pull-right" role="group" aria-label="">
-        <a style="width: 34%" param="psize" value="30" class="hashupdate-js btn @(Request.QueryString["psize"] == "30" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 30}, {"page", 1}})">30</a>
+        <a style="width: 34%" param="psize" value="30" class="hashupdate-js btn @(Request.QueryString["psize"] == "30" || String.IsNullOrEmpty(Request.QueryString["psize"]) ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 30}, {"page", 1}})">30</a>
         <a style="width: 33%" param="psize" value="100" class="hashupdate-js btn @(Request.QueryString["psize"] == "100" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 100}, {"page", 1}})">100</a>
         <a style="width: 34%" param="psize" value="300" class="hashupdate-js btn @(Request.QueryString["psize"] == "300" ? "btn-primary" : "btn-default")" href="@Url.ModifyQueryString(url4Modify, new Dictionary<string, object> {{"psize", 300}, {"page", 1}})">300</a>
+    </div>
+    <div>
+        <blockquote id="systemHandledCountAlert" class="alert alert-success alert-dismissible" style="position: absolute; left:40%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Обработано записей - <span id="systemHandledCount"></span>
+        </blockquote>
     </div>
 </p>
 <table class="table table-bordered table-striped">
     <thead>
     <tr class="bg-primary">
         <td>ID</td>
-        <td>№ заявки</td>
-        <td>Каталожный номер</td>
+        <td class="nowrap">
+            <input id="claimNumSearch" value="@Request.QueryString["claimnum"]" class="form-control input-xs" placeholder="№ заявки" style="width: 100%" />
+            @*№ заявки*@
+        </td>
+        <td class="nowrap">
+            <input id="catNumSearch" value="@Request.QueryString["catnum"]" class="form-control input-xs" placeholder="Каталожный номер" style="width: 100%" />
+            @*Каталожный номер*@
+        </td>
         <td>Наименование</td>
-        <td>Номенклатурный номер</td>
-        <td>Есть в ERP</td>
+        <td class="nowrap">Номенклатурный номер</td>
+        <td class="nowrap">Ниличие в ERP</td>
         <td></td>
     </tr>
     </thead>
@@ -33,20 +86,21 @@
     {
         foreach (var item in Model)
          {
-             <tr>
+            @Html.Partial("ZipDataItem", item)
+             @*<tr>
                  <td>@item.id_claim_unit</td>
                  <td>@item.id_claim</td>
                  <td>@item.catalog_num</td>
                  <td>@item.name</td>
                  <td>@item.nomenclature_num</td>
-                 <td>@(item.erp_handled ? "Да" : "Нет")</td>
+                 <td>@(item.erp_handled ? "Есть" : "Нет")</td>
                  <td>
                      @if (!item.erp_handled)
                      {
-                         <button id="erpHandled" class="btn btn-warning btn-sm">Есть в ERP</button>
+                         <button zuid="@item.id_claim_unit" class="btn btn-warning btn-sm erp-handled-js">Есть в ERP</button>
                      }
                  </td>
-             </tr>
+             </tr>*@
          }
     }
     else

@@ -1393,6 +1393,8 @@ warning 6002: The table/view 'unit_prog.dbo.tmp_device_counter_error' does not h
           <Property Name="supply_descr" Type="nvarchar(max)" />
           <Property Name="erp_handled" Type="bit" Nullable="false" />
           <Property Name="system_handle" Type="bit" Nullable="false" />
+          <Property Name="date_erp_handle" Type="datetime" />
+          <Property Name="erp_handled_user_id" Type="int" />
         </EntityType>
         <EntityType Name="zipcl_engeneer_conclusions">
           <Key>
@@ -1559,7 +1561,7 @@ warning 6002: The table/view 'unit_prog.dbo.claim_unit_zip_data' does not have a
             <PropertyRef Name="erp_handled" />
             <PropertyRef Name="system_handle" />
           </Key>
-          <Property Name="id_claim_unit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_claim_unit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="id_claim" Type="int" Nullable="false" />
           <Property Name="catalog_num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
@@ -1583,25 +1585,10 @@ warning 6002: The table/view 'unit_prog.dbo.claim_unit_zip_data' does not have a
           <Property Name="supply_descr" Type="nvarchar(max)" />
           <Property Name="erp_handled" Type="bit" Nullable="false" />
           <Property Name="system_handle" Type="bit" Nullable="false" />
+          <Property Name="date_erp_handle" Type="datetime" />
+          <Property Name="erp_handled_user_id" Type="int" />
+          <Property Name="erp_handled_user_name" Type="nvarchar" MaxLength="70" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.plan_claims_report' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="plan_claims_report">
-          <Property Name="Контрагент" Type="nvarchar" MaxLength="250" />
-          <Property Name="Город полный" Type="nvarchar" MaxLength="250" />
-          <Property Name="Город" Type="nvarchar" MaxLength="250" />
-          <Property Name="Адрес" Type="nvarchar" MaxLength="250" />
-          <Property Name="Объект" Type="nvarchar" MaxLength="150" />
-          <Property Name="Контакт" Type="nvarchar" MaxLength="150" />
-          <Property Name="Комментарий к объекту" Type="nvarchar(max)" />
-          <Property Name="Модель" Type="nvarchar" MaxLength="500" />
-          <Property Name="Серийный номер" Type="nvarchar" MaxLength="50" />
-          <Property Name="Дата обслуживания план" Type="datetime" />
-          <Property Name="Инженер план" Type="nvarchar" MaxLength="70" />
-          <Property Name="Сервисный администратор" Type="nvarchar" MaxLength="70" />
-          <Property Name="Период обслуживания" Type="nvarchar" MaxLength="150" />
-          <Property Name="Дата последнего обслуживания" Type="datetime" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'unit_prog.dbo.report' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="report">
@@ -1652,22 +1639,6 @@ warning 6002: The table/view 'unit_prog.dbo.report_calls' does not have a primar
           <Property Name="date" Type="nvarchar" MaxLength="35" />
           <Property Name="cnt" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.report_contractors' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="report_contractors">
-          <Property Name="date" Type="nvarchar" MaxLength="30" />
-          <Property Name="cnt" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.snmp_requests_report' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="snmp_requests_report">
-          <Property Name="Логин" Type="int" />
-          <Property Name="Контрагент" Type="nvarchar" MaxLength="387" />
-          <Property Name="Серийный номер" Type="nvarchar" MaxLength="50" />
-          <Property Name="IP-адрес" Type="nvarchar" MaxLength="20" />
-          <Property Name="Счетчик" Type="int" />
-          <Property Name="Дата" Type="datetime" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'unit_prog.dbo.srvpl_active_device_coord_report' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="srvpl_active_device_coord_report">
@@ -2051,16 +2022,6 @@ warning 6002: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteDeviceList_curr_
           <Property Name="is_limit_device_claims" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteEngeneerList_curr_month' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="srvpl_getPlanExecuteEngeneerList_curr_month">
-          <Property Name="service_engeneer" Type="nvarchar" MaxLength="70" />
-          <Property Name="id_service_engeneer" Type="int" />
-          <Property Name="plan_cnt" Type="int" />
-          <Property Name="done_cnt" Type="int" />
-          <Property Name="residue" Type="int" />
-          <Property Name="done_percent" Type="decimal" Precision="10" Scale="0" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteServAdminContractorList_curr_month' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="srvpl_getPlanExecuteServAdminContractorList_curr_month">
           <Key>
@@ -2075,16 +2036,6 @@ warning 6002: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteServAdminContrac
           <Property Name="residue" Type="int" />
           <Property Name="done_percent" Type="decimal" Precision="10" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteServAdminList_curr_month' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="srvpl_getPlanExecuteServAdminList_curr_month">
-          <Property Name="service_admin" Type="nvarchar" MaxLength="70" />
-          <Property Name="id_service_admin" Type="int" />
-          <Property Name="plan_cnt" Type="int" />
-          <Property Name="done_cnt" Type="int" />
-          <Property Name="residue" Type="int" />
-          <Property Name="done_percent" Type="decimal" Precision="10" Scale="0" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'unit_prog.dbo.srvpl_getPlanExecuteServManagerContractorList_curr_month' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="srvpl_getPlanExecuteServManagerContractorList_curr_month">
@@ -2138,15 +2089,6 @@ warning 6002: The table/view 'unit_prog.dbo.srvpl_plan_report' does not have a p
           <Property Name="Месяц обслуживания" Type="nvarchar" MaxLength="61" />
           <Property Name="Статус" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'unit_prog.dbo.srvpl_serv_admin_exec_report' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="srvpl_serv_admin_exec_report">
-          <Property Name="ФИО" Type="nvarchar" MaxLength="70" />
-          <Property Name="План" Type="int" />
-          <Property Name="Выполнено" Type="int" />
-          <Property Name="Невыполнено" Type="int" />
-          <Property Name="% выполнения" Type="decimal" Precision="10" Scale="0" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'unit_prog.dbo.zip_state_history_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="zip_state_history_view">
@@ -3998,7 +3940,10 @@ warning 6002: The table/view 'unit_prog.dbo.zipcl_units_report' does not have a 
     [claim_unit_zip_data].[id_zip_item] AS [id_zip_item], 
     [claim_unit_zip_data].[supply_descr] AS [supply_descr], 
     [claim_unit_zip_data].[erp_handled] AS [erp_handled], 
-    [claim_unit_zip_data].[system_handle] AS [system_handle]
+    [claim_unit_zip_data].[system_handle] AS [system_handle], 
+    [claim_unit_zip_data].[date_erp_handle] AS [date_erp_handle], 
+    [claim_unit_zip_data].[erp_handled_user_id] AS [erp_handled_user_id], 
+    [claim_unit_zip_data].[erp_handled_user_name] AS [erp_handled_user_name]
     FROM [dbo].[claim_unit_zip_data] AS [claim_unit_zip_data]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="report" EntityType="Self.report" store:Type="Views" store:Schema="dbo">
@@ -5922,6 +5867,8 @@ warning 6002: The table/view 'unit_prog.dbo.zipcl_units_report' does not have a 
           <Property Name="supply_descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="erp_handled" Type="Boolean" Nullable="false" />
           <Property Name="system_handle" Type="Boolean" Nullable="false" />
+          <Property Name="date_erp_handle" Type="DateTime" Precision="3" />
+          <Property Name="erp_handled_user_id" Type="Int32" />
         </EntityType>
         <EntityType Name="zipcl_engeneer_conclusions">
           <Key>
@@ -8690,6 +8637,9 @@ warning 6002: The table/view 'unit_prog.dbo.zipcl_units_report' does not have a 
           <Property Name="supply_descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="erp_handled" Type="Boolean" Nullable="false" />
           <Property Name="system_handle" Type="Boolean" Nullable="false" />
+          <Property Name="date_erp_handle" Type="DateTime" Precision="3" />
+          <Property Name="erp_handled_user_id" Type="Int32" />
+          <Property Name="erp_handled_user_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -10054,6 +10004,8 @@ warning 6002: The table/view 'unit_prog.dbo.zipcl_units_report' does not have a 
           <EntitySetMapping Name="zipcl_claim_units">
             <EntityTypeMapping TypeName="unit_progModel.zipcl_claim_units">
               <MappingFragment StoreEntitySet="zipcl_claim_units">
+                <ScalarProperty Name="erp_handled_user_id" ColumnName="erp_handled_user_id" />
+                <ScalarProperty Name="date_erp_handle" ColumnName="date_erp_handle" />
                 <ScalarProperty Name="system_handle" ColumnName="system_handle" />
                 <ScalarProperty Name="erp_handled" ColumnName="erp_handled" />
                 <ScalarProperty Name="id_claim_unit" ColumnName="id_claim_unit" />
@@ -11333,6 +11285,9 @@ warning 6002: The table/view 'unit_prog.dbo.zipcl_units_report' does not have a 
           <EntitySetMapping Name="claim_unit_zip_data">
             <EntityTypeMapping TypeName="unit_progModel.claim_unit_zip_data">
               <MappingFragment StoreEntitySet="claim_unit_zip_data">
+                <ScalarProperty Name="erp_handled_user_name" ColumnName="erp_handled_user_name" />
+                <ScalarProperty Name="erp_handled_user_id" ColumnName="erp_handled_user_id" />
+                <ScalarProperty Name="date_erp_handle" ColumnName="date_erp_handle" />
                 <ScalarProperty Name="system_handle" ColumnName="system_handle" />
                 <ScalarProperty Name="erp_handled" ColumnName="erp_handled" />
                 <ScalarProperty Name="supply_descr" ColumnName="supply_descr" />
